@@ -1,0 +1,88 @@
+{
+  "name": "<%= appname %>",
+  "private": true,
+  "version": "<%= version %>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<%= githubUsername %>/<%= appname %>.git"
+  },
+  "author": "<%= gitName %> <<%= gitEmail %>>",
+  "bugs": {
+    "url": "https://github.com/<%= githubUsername %>/<%= appname %>/issues"
+  },
+  "homepage": "https://github.com/<%= githubUsername %>/<%= appname %>#readme",
+  "scripts": {
+    "clean": "rimraf coverage build *.log*",
+    "start": "react-scripts start",
+    "prebuild": "rimraf build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "check-types": "tsc --noEmit",
+    "precover": "rimraf coverage",
+    "cover": "npm test -- --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run check-types"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,jsx}": [
+      "git reset"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "proseWrap": "always",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/index.tsx",
+      "!src/serviceWorker.ts",
+      "!src/themes"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "lines": 100,
+        "functions": 100
+      }
+    },
+    "coverageReporters": [
+      "json",
+      "lcov"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "globals": {
+      "fetch": true
+    },
+    "rules": {
+      "no-async-promise-executor": "error",
+      "no-await-in-loop": "error",
+      "no-console": "error",
+      "no-misleading-character-class": "error",
+      "no-template-curly-in-string": "error",
+      "require-atomic-updates": "error"
+    }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
