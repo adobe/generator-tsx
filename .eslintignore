@@ -1,0 +1,4 @@
+coverage
+generators/**/expected
+generators/**/templates
+generators/**/*.js

@@ -1,0 +1,4 @@
+node_modules
+coverage
+generators/**/*.js
+generators/**/*.d.ts

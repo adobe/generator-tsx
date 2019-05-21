@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cartReducer returns initial state 1`] = `
+Object {
+  "errors": Array [],
+  "items": Array [],
+  "loading": false,
+  "subtotal": Object {
+    "amount": 0,
+  },
+}
+`;

@@ -1,0 +1,133 @@
+{
+  "name": "generator-tsx",
+  "version": "0.0.0",
+  "description": "CRA + TypeScript + React + Redux + Router + Testing Library",
+  "homepage": "https://github.com/jedmao/tsx/tree/generator",
+  "author": {
+    "name": "Jed Mao",
+    "email": "jedmao@outlook.com",
+    "url": "https://github.com/jedmao"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "cra",
+    "typescript",
+    "react",
+    "react-redux",
+    "react-router",
+    "react-testing-library",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "@jedmao/tsconfig": "^0.3.0",
+    "@types/fs-extra": "^7.0.0",
+    "@types/jest": "^24.0.13",
+    "@types/yeoman-assert": "^3.1.1",
+    "@types/yeoman-generator": "^3.1.2",
+    "@types/yeoman-test": "^2.0.2",
+    "@types/yosay": "0.0.29",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-xo": "^0.26.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "fs-extra": "^8.0.1",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "jest-watch-typeahead": "^0.3.1",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^2.0.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "@queso/camel-case": "^0.1.0",
+    "@queso/pick": "^0.5.0",
+    "@queso/snake-case": "^0.1.0",
+    "chalk": "^2.4.2",
+    "tslib": "^1.9.3",
+    "yeoman-generator": "^4.0.0",
+    "yosay": "^2.0.2"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "proseWrap": "always",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "verbose": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "modulePathIgnorePatterns": [
+      "expected",
+      "templates"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf coverage *.log* generators/**/*.js generators/**/*.d.ts",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "lint": "eslint generators/**/*[!d].ts",
+    "pretest": "npm run clean && npm run lint",
+    "test": "jest --watch",
+    "precover": "rimraf coverage && npm run build",
+    "cover": "jest --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": "https://github.com/jedmao/tsx.git",
+  "license": "MIT"
+}

@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Jed Mao",
+      "authorEmail": "jedmao@outlook.com",
+      "authorUrl": "https://github.com/jedmao"
+    }
+  }
+}

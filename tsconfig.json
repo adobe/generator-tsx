@@ -1,0 +1,19 @@
+{
+  "extends": "@jedmao/tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "rootDir": "generators",
+    "target": "esnext",
+    "importHelpers": true
+  },
+  "include": ["generators/**/*.ts"],
+  "exclude": [
+    "generators/**/*.test.ts",
+    "generators/**/templates",
+    "generators/**/expected"
+  ]
+}
