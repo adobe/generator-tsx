@@ -8,6 +8,7 @@ cache: npm
 branches:
   only:
     - generator
+    - /^greenkeeper/.*$/
 
 script:
   - npm run lint
