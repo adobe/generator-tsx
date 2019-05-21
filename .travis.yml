@@ -7,7 +7,7 @@ cache: npm
 
 branches:
   only:
-    - generator
+    - master
     - /^greenkeeper/.*$/
 
 script:
