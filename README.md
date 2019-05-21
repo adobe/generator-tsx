@@ -2,7 +2,7 @@
 
 [![Travis Build Status](https://img.shields.io/travis/adobe/generator-tsx.svg?branch=master)](https://travis-ci.org/adobe/generator-tsx)
 [![codecov](https://codecov.io/gh/adobe/generator-tsx/branch/master/graph/badge.svg)](https://codecov.io/gh/adobe/generator-tsx)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/generator-tsx.svg)](https://greenkeeper.io/)
 
 ![screenshot](screenshot.png)
 
