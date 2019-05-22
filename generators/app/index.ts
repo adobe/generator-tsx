@@ -46,7 +46,7 @@ export = class extends Generator {
 			githubUsername = ''
 		}
 
-		this.answers = (await this.prompt([
+		this.answers = await this.prompt([
 			{
 				name: 'appname',
 				message: 'project name',
@@ -75,7 +75,7 @@ export = class extends Generator {
 				default: await this.user.git.email(),
 				store: true,
 			},
-		])) as Answers
+		])
 	}
 
 	public configuring() {

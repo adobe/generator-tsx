@@ -40,14 +40,14 @@ export = class extends Generator {
 		if (this.options.name) {
 			return
 		}
-		this.answers = (await this.prompt([
+		this.answers = await this.prompt([
 			{
 				name: 'model',
 				message: 'What model are you fetching?',
 				default: this.answers.model,
 				filter: fixModelPath,
 			},
-		])) as Answers
+		])
 	}
 
 	public configuring() {
