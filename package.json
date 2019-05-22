@@ -1,6 +1,6 @@
 {
   "name": "generator-tsx",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "CRA + TypeScript + React + Redux + Router + Testing Library",
   "homepage": "https://github.com/adobe/generator-tsx",
   "author": {
@@ -8,6 +8,7 @@
     "email": "Grp-opensourceoffice@adobe.com",
     "url": "https://adobe.com"
   },
+  "main": "generators/app/index.js",
   "files": [
     "generators/**/*.js",
     "generators/**/*.d.ts",
@@ -45,8 +46,8 @@
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "jest-watch-typeahead": "^0.3.1",
-    "lint-staged": "^8.1.7",
     "lerna": "^3.14.1",
+    "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
