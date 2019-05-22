@@ -59,7 +59,7 @@ export = class ActionsGenerator extends Generator {
 	}
 
 	public async prompting() {
-		this.answers = (await this.prompt([
+		this.answers = await this.prompt([
 			{
 				type: 'list',
 				name: 'scenario',
@@ -73,21 +73,21 @@ export = class ActionsGenerator extends Generator {
 				default: 'Foo',
 				filter: sentenceCamelCase,
 				when: answers => answers.scenario === 'fetching data',
-			} as Generator.Question,
+			},
 			{
 				name: 'subject',
 				message: 'What state are you setting?',
 				default: 'foo',
 				filter: camelCase,
 				when: answers => answers.scenario === 'setting state',
-			} as Generator.Question,
+			},
 			{
 				name: 'subject',
 				message: 'Name of first action',
 				default: 'foo',
 				filter: camelCase,
 				when: answers => answers.scenario === 'other',
-			} as Generator.Question,
+			},
 			{
 				name: 'api',
 				message: 'Name of API client',
@@ -95,7 +95,7 @@ export = class ActionsGenerator extends Generator {
 				filter: camelCase,
 				when: answers => answers.scenario === 'fetching data',
 			},
-		] as Generator.Question[])) as Answers
+		])
 	}
 
 	public writing() {
