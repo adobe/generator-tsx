@@ -1,13 +1,21 @@
 # Contributing
 
-Thanks for choosing to contribute!
+:+1: :tada: :sparkling_heart: Thanks for choosing to contribute!
+:sparkling_heart: :tada: :+1:
 
 The following are a set of guidelines to follow when contributing to this
 project.
 
+## Commit Messages
+
+Follow the [commit message convention](https://conventionalcommits.org/) to
+enable automatic changelog generation. If you aren't familiar with the
+convention, use `npm run commit` instead of `git commit` to provide an
+interactive CLI for generating valid commit messages.
+
 ## Code Of Conduct
 
-This project adheres to the Adobe [code of conduct](../CODE_OF_CONDUCT.md). By
+This project adheres to the Adobe [code of conduct](CODE_OF_CONDUCT.md). By
 participating, you are expected to uphold this code. Please report unacceptable
 behavior to
 [Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).

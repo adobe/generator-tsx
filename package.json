@@ -9,7 +9,9 @@
     "url": "https://adobe.com"
   },
   "files": [
-    "generators"
+    "generators/**/*.js",
+    "generators/**/*.d.ts",
+    "generators/*/templates/"
   ],
   "keywords": [
     "cra",
@@ -22,6 +24,8 @@
     "yeoman-generator"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
     "@types/fs-extra": "^7.0.0",
     "@types/jest": "^24.0.13",
     "@types/yeoman-assert": "^3.1.1",
@@ -29,7 +33,10 @@
     "@types/yeoman-test": "^2.0.3",
     "@types/yosay": "0.0.29",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "commitizen": "^3.1.1",
     "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-xo": "^0.26.0",
@@ -63,7 +70,20 @@
     "proseWrap": "always",
     "semi": false,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": [
+          "*.json",
+          "*.md",
+          "*.yml"
+        ],
+        "options": {
+          "useTabs": false,
+          "tabWidth": 2
+        }
+      }
+    ]
   },
   "jest": {
     "preset": "ts-jest",
@@ -94,9 +114,10 @@
   "lint-staged": {
     "*.ts": [
       "eslint --fix",
+      "prettier --write",
       "git add"
     ],
-    "*.json": [
+    "*.{json,md}": [
       "prettier --write",
       "git add"
     ]
@@ -120,13 +141,33 @@
   "scripts": {
     "clean": "rimraf coverage *.log* generators/**/*.js generators/**/*.d.ts",
     "prebuild": "npm run clean",
-    "build": "tsc",
+    "build": "tsc && npm run prettier",
+    "prettier": "prettier \"generators/**/*.{js,d.ts}\" --write",
     "lint": "eslint generators/**/*[!d].ts",
-    "pretest": "npm run clean && npm run lint",
+    "pretest": "npm run clean",
     "test": "jest --watch",
     "precover": "rimraf coverage && npm run build",
     "cover": "jest --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "commit": "git-cz",
+    "release": "cross-env HUSKY_BYPASS=true lerna publish"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "tsc --noEmit && npm run cover"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "repository": "https://github.com/adobe/generator-tsx.git",
   "license": "MIT"
