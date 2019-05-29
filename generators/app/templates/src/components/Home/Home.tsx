@@ -1,3 +1,4 @@
+import { styled } from 'linaria/react'
 import React, { useEffect } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl'
@@ -8,7 +9,6 @@ import useTheme from 'helpers/useTheme'
 import Theme from 'models/Theme'
 import RootState from 'store/RootState'
 
-import styles from './Home.module.css'
 import logo from './logo.svg'
 
 interface StateProps extends Pick<RootState, 'cart'> {
@@ -31,12 +31,12 @@ const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
 	}, [getCart])
 	useTheme(theme)
 	return (
-		<div className={styles.root}>
+		<Root>
 			<Helmet>
 				<title>Home</title>
 			</Helmet>
-			<header className={styles.header}>
-				<img src={logo} className={styles.logo} alt="logo" />
+			<Header>
+				<Logo src={logo} alt="logo" />
 				<p>
 					<FormattedHTMLMessage id="home.instructions" />
 				</p>
@@ -48,8 +48,8 @@ const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
 					<FormattedMessage id="home.learn" />
 				</a>
 				{JSON.stringify(cart.subtotal.amount)}
-			</header>
-		</div>
+			</Header>
+		</Root>
 	)
 }
 
@@ -62,3 +62,29 @@ export default connect<StateProps, DispatchProps, void, RootState>(
 		getCart: fetchCart,
 	},
 )(Home)
+
+const Root = styled.div`
+	text-align: center;
+`
+
+const Header = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+`
+
+const Logo = styled.img`
+	animation: spin infinite 20s linear;
+	height: 40vmin;
+	pointer-events: none;
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+`

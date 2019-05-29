@@ -22,7 +22,6 @@ describe('tsx:component', () => {
 			'barBaz/QuxQuux/index.ts',
 			'barBaz/QuxQuux/QuxQuux.tsx',
 			'barBaz/QuxQuux/QuxQuux.test.tsx',
-			'barBaz/QuxQuux/QuxQuux.module.css',
 		]
 		for (const filename of expectedFiles) {
 			assert.fileContent(
