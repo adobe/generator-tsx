@@ -1,6 +1,4 @@
 /*eslint-disable no-throw-literal*/
-import { Omit } from 'ts-essentials'
-
 import ResponseError from 'models/ResponseError'
 import ResponsePayload from 'models/ResponsePayload'
 
@@ -61,5 +59,5 @@ export default async function resolveFetch<TBody extends any>(
 	 * Intentionally omit non-TBody props from the result type,
 	 * because errors have already been dealt with.
 	 */
-	return (responsePayload as Omit<typeof responsePayload, 'errors'>) as TBody
+	return (responsePayload as unknown) as TBody
 }

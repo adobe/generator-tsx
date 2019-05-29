@@ -6,7 +6,6 @@
     "allowUnusedLabels": false,
     "alwaysStrict": true,
     "baseUrl": "src",
-    "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,

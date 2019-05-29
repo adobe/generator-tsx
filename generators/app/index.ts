@@ -85,6 +85,7 @@ export = class extends Generator {
 			'.gitignore',
 			'.markdownlint.json',
 			'.travis.yml',
+			'config',
 			'tsconfig.json',
 		].forEach(filename => {
 			this.fs.copy(
@@ -124,6 +125,7 @@ export = class extends Generator {
 		)
 		this.npmInstall(
 			[
+				'@craco/craco@5',
 				'@jedmao/tsconfig',
 				'@types/fetch-mock@^7',
 				'@types/jest@^24',
@@ -137,9 +139,12 @@ export = class extends Generator {
 				'@types/redux-logger@^3',
 				'@types/redux-mock-store@^1',
 				'@types/webpack-env@^1',
+				// TODO: https://github.com/callstack/linaria/issues/420
+				'core-js@2',
 				'fetch-mock@^7',
 				'husky@^2',
 				'jest-fetch-mock@^2',
+				'linaria@1',
 				'lint-staged@^8',
 				'prettier@^1',
 				'react-scripts@^3',

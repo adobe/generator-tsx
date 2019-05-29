@@ -13,10 +13,10 @@
   "homepage": "https://github.com/<%= githubUsername %>/<%= appname %>#readme",
   "scripts": {
     "clean": "rimraf coverage build *.log*",
-    "start": "react-scripts start",
+    "start": "craco start",
     "prebuild": "rimraf build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "check-types": "tsc --noEmit",
     "precover": "rimraf coverage",
@@ -65,6 +65,7 @@
       "lcov"
     ]
   },
+  "cracoConfig": "config/craco.config.js",
   "eslintConfig": {
     "extends": "react-app",
     "globals": {

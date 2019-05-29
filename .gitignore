@@ -1,7 +1,9 @@
 node_modules
 coverage
 generator-tsx-*
-generators/**/*.js
-generators/**/*.d.ts
+generators/*.js
+generators/*.d.ts
+generators/*/*.js
+generators/*/*.d.ts
 package
 .yo-rc.json

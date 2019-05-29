@@ -22,6 +22,7 @@ See [Design Goals](https://github.com/adobe/generator-tsx/wiki/Design-Goals).
    -  [Router](https://github.com/ReactTraining/react-router)
    -  [Testing Library](https://github.com/testing-library/react-testing-library#react-testing-library)
    -  [react-intl](https://github.com/formatjs/react-intl)
+-  CSS in JS via [Linaria](https://linaria.now.sh/)
 
 ## Installation
 
