@@ -9,8 +9,10 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "generators/**/*.js": true,
-    "generators/**/*.d.ts": true
+    "generators/*.js": true,
+    "generators/*.d.ts": true,
+    "generators/*/*.js": true,
+    "generators/*/*.d.ts": true
   },
   "search.exclude": {
     "**/coverge": true,

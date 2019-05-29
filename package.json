@@ -10,8 +10,10 @@
   },
   "main": "generators/app/index.js",
   "files": [
-    "generators/**/*.js",
-    "generators/**/*.d.ts",
+    "generators/*.js",
+    "generators/*.d.ts",
+    "generators/*/*.js",
+    "generators/*/*.d.ts",
     "generators/*/templates/"
   ],
   "keywords": [
@@ -141,7 +143,7 @@
     ]
   },
   "scripts": {
-    "clean": "rimraf coverage *.log* generators/**/*.js generators/**/*.d.ts",
+    "clean": "rimraf coverage *.log* generators/*.js generators/*.d.ts generators/*/*.js generators/*/*.d.ts",
     "prebuild": "npm run clean",
     "build": "tsc && npm run prettier",
     "prettier": "prettier \"generators/**/*.{js,d.ts}\" --write",
