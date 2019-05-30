@@ -82,7 +82,7 @@ export = class extends Generator {
 		;[
 			'.vscode',
 			'.editorconfig',
-			'.gitignore',
+			'_gitignore',
 			'.markdownlint.json',
 			'.travis.yml',
 			'config',
@@ -90,7 +90,7 @@ export = class extends Generator {
 		].forEach(filename => {
 			this.fs.copy(
 				this.templatePath(filename),
-				this.destinationPath(filename),
+				this.destinationPath(filename.replace(/^_/, '.')),
 			)
 		})
 	}
