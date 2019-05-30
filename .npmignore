@@ -1,0 +1,8 @@
+coverage
+generator-tsx-*
+generators/*.ts
+!generators/*.d.ts
+generators/*/*.ts
+!generators/*/*.d.ts
+package
+.yo-rc.json
