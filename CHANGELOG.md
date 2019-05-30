@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/adobe/generator-tsx/compare/v0.1.2...v0.1.3) (2019-05-30)
+
+
+### Bug Fixes
+
+* unignore files for npm publish ([baa72e5](https://github.com/adobe/generator-tsx/commit/baa72e5))
+
+
+
+
+
+## [0.1.3](https://github.com/adobe/generator-tsx/compare/v0.1.2...v0.1.3) (2019-05-30)
+
+
+### Bug Fixes
+
+* unignore files for npm publish ([baa72e5](https://github.com/adobe/generator-tsx/commit/baa72e5))
+
+
+
+
+
 ## [0.1.2](https://github.com/adobe/generator-tsx/compare/v0.1.1...v0.1.2) (2019-05-30)
 
 **Note:** Version bump only for package generator-tsx
