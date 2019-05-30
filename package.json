@@ -38,7 +38,6 @@
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "commitizen": "^3.1.1",
     "coveralls": "^3.0.3",
-    "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
@@ -153,8 +152,7 @@
     "precover": "rimraf coverage && npm run build",
     "cover": "jest --coverage",
     "prepublishOnly": "npm run build",
-    "commit": "git-cz",
-    "release": "cross-env HUSKY_BYPASS=true lerna publish"
+    "commit": "git-cz"
   },
   "husky": {
     "hooks": {
