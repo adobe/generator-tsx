@@ -1,13 +1,16 @@
 {
-  "packages": [
-    "."
-  ],
+  "packages": ["."],
   "command": {
     "publish": {
-      "allowBranch": [
-        "master"
+      "allowBranch": ["master"],
+      "commitHooks": false,
+      "conventionalCommits": true,
+      "ignoreChanges": [
+        "*.md",
+        "generators/*.test.ts",
+        "generators/*/*.test.ts"
       ],
-      "conventionalCommits": true
+      "message": "chore(release): publish %s"
     }
   },
   "version": "0.1.1"
