@@ -1,5 +1,3 @@
-import { Omit } from 'ts-essentials'
-
 /**
  * https://jsonapi.org/format/#error-objects
  */

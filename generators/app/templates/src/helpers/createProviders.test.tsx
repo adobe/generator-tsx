@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 
 import translations from 'translations/en.json'
 import { mockStore } from 'utils/test'

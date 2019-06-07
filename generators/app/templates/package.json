@@ -12,15 +12,22 @@
   },
   "homepage": "https://github.com/<%= githubUsername %>/<%= appname %>#readme",
   "scripts": {
-    "clean": "rimraf coverage build *.log*",
-    "start": "craco start",
-    "prebuild": "rimraf build",
+    "postinstall": "cd server && npm install",
+    "clean": "rimraf coverage build *.log* src/__generated__ src/models/generated.ts server/models.ts",
+    "prestart": "npm run clean && concurrently \"npm:codegen\" \"npm:relay\"",
+    "start": "concurrently \"npm:graphql\" \"npm:craco\" \"npm:w:codegen\" \"npm:w:relay\"",
+    "craco": "craco start",
+    "prebuild": "npm run clean",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "check-types": "tsc --noEmit",
     "precover": "rimraf coverage",
-    "cover": "npm test -- --coverage"
+    "relay": "relay-compiler --src src --schema server/src/schemas/Root.gql --language typescript --artifactDirectory src/__generated__",
+    "w:relay": "npm run relay -- --watch",
+    "codegen": "graphql-codegen -c codegen.yml",
+    "w:codegen": "npm run codegen -- -w",
+    "graphql": "cd server && npm start"
   },
   "husky": {
     "hooks": {
@@ -39,6 +46,7 @@
   },
   "prettier": {
     "arrowParens": "avoid",
+    "ignorePath": "src/__generated__",
     "proseWrap": "always",
     "semi": false,
     "singleQuote": true,
@@ -85,5 +93,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "babelMacros": {
+    "relay": {
+      "artifactDirectory": "src/__generated__"
+    }
+  },
+  "proxy": "http://localhost:4000"
 }

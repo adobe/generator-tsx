@@ -1,0 +1,14 @@
+overwrite: true
+schema: 'server/src/schemas/**/*.gql'
+documents: 'src/**/*.{ts,tsx}'
+generates:
+  src/models/generated.tsx:
+    - typescript
+    - typescript-operations
+  server/models.ts:
+    - typescript
+    - typescript-resolvers
+pluckConfig:
+  modules:
+    - name: 'babel-plugin-relay/macro'
+      identifier: 'graphql'

@@ -1,6 +1,5 @@
 import { ReactElement } from 'react'
-import { render, RenderOptions } from 'react-testing-library'
-import { Omit } from 'ts-essentials'
+import { render, RenderOptions } from '@testing-library/react'
 
 import createProviders from 'helpers/createProviders'
 
@@ -11,6 +10,6 @@ function customRender(ui: ReactElement<any>, options?: CustomRenderOptions) {
 	return render(ui, { wrapper: Providers, ...options })
 }
 
-export * from 'react-testing-library'
+export * from '@testing-library/react'
 
 export { customRender as render }

@@ -3,13 +3,19 @@ import React, { useEffect } from 'react'
 import Helmet from 'react-helmet'
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl'
 import { connect } from 'react-redux'
+import { graphql } from 'babel-plugin-relay/macro'
+import { QueryRenderer } from 'react-relay'
+import { Environment } from 'relay-runtime'
 
 import { fetchCart } from 'actions/cart'
+import configEnvironment from 'config/environment'
 import useTheme from 'helpers/useTheme'
 import Theme from 'models/Theme'
 import RootState from 'store/RootState'
 
 import logo from './logo.svg'
+import Spinner from 'components/Spinner'
+import { HomeQueryResponse } from '__generated__/HomeQuery.graphql'
 
 interface StateProps extends Pick<RootState, 'cart'> {
 	theme: Theme
@@ -19,10 +25,13 @@ interface DispatchProps {
 	getCart(): void
 }
 
-export interface HomeProps {}
+export interface HomeProps {
+	environment?: Environment
+}
 
 const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
 	cart,
+	environment = configEnvironment,
 	getCart,
 	theme,
 }) => {
@@ -47,7 +56,33 @@ const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
 				>
 					<FormattedMessage id="home.learn" />
 				</a>
-				{JSON.stringify(cart.subtotal.amount)}
+				{cart && JSON.stringify(cart.subtotal.amount)}
+				<QueryRenderer
+					{...{
+						environment,
+						query: graphql`
+							query HomeQuery {
+								hello
+							}
+						`,
+						variables: {},
+						render({
+							error,
+							props,
+						}: {
+							error: Error | null
+							props: HomeQueryResponse | null
+						}) {
+							if (error) {
+								return <div>Error! {error.message}</div>
+							}
+							if (!props) {
+								return <Spinner />
+							}
+							return <div>{props.hello}</div>
+						},
+					}}
+				/>
 			</Header>
 		</Root>
 	)
@@ -79,6 +114,7 @@ const Logo = styled.img`
 	animation: spin infinite 20s linear;
 	height: 40vmin;
 	pointer-events: none;
+
 	@keyframes spin {
 		from {
 			transform: rotate(0deg);

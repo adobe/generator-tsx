@@ -83,8 +83,12 @@ export = class extends Generator {
 			'.vscode',
 			'.editorconfig',
 			'_gitignore',
+			'.gqlconfig',
 			'.markdownlint.json',
+			'.prettierignore',
 			'.travis.yml',
+			'.watchmanconfig',
+			'codegen.yml',
 			'config',
 			'tsconfig.json',
 		].forEach(filename => {
@@ -96,25 +100,30 @@ export = class extends Generator {
 	}
 
 	public writing() {
-		;['public', 'src', 'package.json', 'README.md'].forEach(filename => {
-			this.fs.copyTpl(
-				this.templatePath(filename),
-				this.destinationPath(filename),
-				this.answers,
-			)
-		})
+		;['public', 'server', 'src', 'package.json', 'README.md'].forEach(
+			filename => {
+				this.fs.copyTpl(
+					this.templatePath(filename),
+					this.destinationPath(filename),
+					this.answers,
+				)
+			},
+		)
 	}
 
 	public install() {
 		this.npmInstall(
 			[
 				'@queso/kebab-case@^1',
+				'babel-plugin-relay@4',
+				'graphql-tag@2',
 				'immutability-helper@^3',
 				'react@^16',
 				'react-dom@^16',
 				'react-helmet@^5',
 				'react-intl@^2',
 				'react-redux@^7',
+				'react-relay@4',
 				'react-router-dom@^5',
 				'redux@^4',
 				'redux-thunk@^2',
@@ -126,8 +135,17 @@ export = class extends Generator {
 		this.npmInstall(
 			[
 				'@craco/craco@5',
+				'@graphql-codegen/cli@1',
+				'@graphql-codegen/introspection@1',
+				'@graphql-codegen/typescript@1',
+				'@graphql-codegen/typescript-graphql-files-modules@1',
+				'@graphql-codegen/typescript-operations@1',
+				'@graphql-codegen/typescript-resolvers@1',
 				'@jedmao/tsconfig',
+				'@playlyfe/gql@2',
+				'@testing-library/react@8',
 				'@types/fetch-mock@^7',
+				'@types/graphql@14',
 				'@types/jest@^24',
 				'@types/node@^12',
 				'@types/react@^16',
@@ -135,30 +153,36 @@ export = class extends Generator {
 				'@types/react-helmet@^5',
 				'@types/react-intl@^2',
 				'@types/react-redux@^7',
+				'@types/react-relay@1',
 				'@types/react-router-dom@^4',
 				'@types/redux-logger@^3',
 				'@types/redux-mock-store@^1',
 				'@types/webpack-env@^1',
-				// TODO: https://github.com/callstack/linaria/issues/420
-				'core-js@2',
+				'concurrently@4',
+				'core-js@2', // TODO: https://github.com/callstack/linaria/issues/420
 				'fetch-mock@^7',
+				'graphql@14',
 				'husky@^2',
 				'jest-fetch-mock@^2',
 				'linaria@1',
 				'lint-staged@^8',
 				'prettier@^1',
 				'react-scripts@^3',
-				'react-testing-library@^7',
 				'redux-devtools-extension@^2',
 				'redux-logger@^3',
 				'redux-mock-store@^1',
+				'relay-compiler@4',
+				'relay-compiler-language-typescript@4',
+				'relay-test-utils@4',
 				'rimraf@^2',
 				'ts-essentials@^2',
+				'ts-helpers@1',
 				'typescript@^3',
 			],
 			{
 				'save-dev': true,
 			},
 		)
+		this.spawnCommandSync('npm', ['run', 'postinstall'])
 	}
 }

@@ -59,5 +59,5 @@ export default async function resolveFetch<TBody extends any>(
 	 * Intentionally omit non-TBody props from the result type,
 	 * because errors have already been dealt with.
 	 */
-	return (responsePayload as unknown) as TBody
+	return (responsePayload as Omit<ResponsePayload, 'errors'>) as TBody
 }

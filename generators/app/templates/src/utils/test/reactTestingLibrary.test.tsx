@@ -7,7 +7,7 @@ import { render } from './reactTestingLibrary'
 
 const Foo: React.FC = () => <FormattedMessage id="test" />
 
-describe('react-testing-library', () => {
+describe('reactTestingLibrary', () => {
 	describe('render', () => {
 		it('renders translated text', () => {
 			const rendered = render(<Foo />).getByText(translations.test)
