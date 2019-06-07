@@ -6,10 +6,20 @@ import svg from './spinner.svg'
 
 interface SpinnerProps extends React.ObjectHTMLAttributes<HTMLObjectElement> {}
 
-const Spinner: React.FC<SpinnerProps & InjectedIntlProps> = props => (
-	<object type="image/svg+xml" data={svg} {...props}>
-		<img src={gif} alt={props.intl.formatMessage({ id: 'spinner' })} />
-	</object>
-)
+const Spinner: React.FC<SpinnerProps & InjectedIntlProps> = props => {
+	const label = props.intl.formatMessage({ id: 'spinner' })
+	return (
+		<object
+			aria-label={label}
+			data={svg}
+			data-testid="spinner"
+			role="img"
+			type="image/svg+xml"
+			{...props}
+		>
+			<img src={gif} alt={label} />
+		</object>
+	)
+}
 
 export default injectIntl(Spinner)

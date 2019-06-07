@@ -1,0 +1,11 @@
+{
+  "extends": "@jedmao/tsconfig",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "target": "es2015"
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Express GraphQL Server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/server.ts"
+  },
+  "dependencies": {
+    "express": "^4",
+    "express-graphql": "^0.8",
+    "graphql": "^14",
+    "graphql-relay": "^0.6",
+    "ts-node": "^8",
+    "typescript": "^3"
+  },
+  "devDependencies": {
+    "@types/express": "^4",
+    "@types/express-graphql": "^0.8",
+    "@types/graphql": "^14"
+  }
+}

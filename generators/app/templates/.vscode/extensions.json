@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
+    "kumar-harsh.graphql-for-vscode",
     "mikestead.dotenv",
     "msjsdiag.debugger-for-chrome",
     "orta.vscode-jest",

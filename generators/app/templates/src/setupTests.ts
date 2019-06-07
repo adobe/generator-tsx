@@ -1,5 +1,5 @@
 import { GlobalWithFetchMock } from 'jest-fetch-mock'
-import 'react-testing-library/cleanup-after-each'
+import '@testing-library/react/cleanup-after-each'
 
 const customGlobal = global as GlobalWithFetchMock
 customGlobal.fetch = require('jest-fetch-mock')

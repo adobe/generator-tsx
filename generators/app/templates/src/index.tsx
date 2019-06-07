@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import 'ts-helpers'
 
 import App from 'components/App/App'
 import createProviders from 'helpers/createProviders'

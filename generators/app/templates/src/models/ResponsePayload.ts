@@ -1,4 +1,4 @@
-import { Merge, Omit } from 'ts-essentials'
+import { Merge } from 'ts-essentials'
 
 import ResponseError from './ResponseError'
 
