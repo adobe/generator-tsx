@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/adobe/generator-tsx/compare/v0.1.6...v0.2.0) (2019-06-07)
+
+
+### Features
+
+* introduce data fetching via Relay / GraphQL ([ad292b1](https://github.com/adobe/generator-tsx/commit/ad292b1)), closes [#13](https://github.com/adobe/generator-tsx/issues/13)
+
+
+
+
+
+# [0.2.0](https://github.com/adobe/generator-tsx/compare/v0.1.6...v0.2.0) (2019-06-07)
+
+
+### Features
+
+* introduce data fetching via Relay / GraphQL ([ad292b1](https://github.com/adobe/generator-tsx/commit/ad292b1)), closes [#13](https://github.com/adobe/generator-tsx/issues/13)
+
+
+
+
+
 ## [0.1.6](https://github.com/adobe/generator-tsx/compare/v0.1.5...v0.1.6) (2019-06-01)
 
 **Note:** Version bump only for package generator-tsx
