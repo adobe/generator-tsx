@@ -29,8 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@semantic-release/changelog": "^3.0.2",
-    "@semantic-release/git": "^7.0.8",
+    "@jedmao/semantic-release-npm-github-config": "^1.0.2",
     "@types/fs-extra": "^7.0.0",
     "@types/jest": "^24.0.13",
     "@types/yeoman-assert": "^3.1.1",
@@ -176,33 +175,7 @@
   },
   "release": {
     "branch": "master",
-    "plugins": [
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogTitle": "Changelog"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "tarballDir": "dist"
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "assets": "dist/*.tgz"
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ]
-    ]
+    "extends": "@jedmao/semantic-release-npm-github-config"
   },
   "repository": "https://github.com/adobe/generator-tsx.git",
   "license": "MIT"
