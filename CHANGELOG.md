@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/adobe/generator-tsx/compare/v0.2.2...v0.2.3) (2019-06-11)
+
+
+### Bug Fixes
+
+* version bump (test changelog) ([613ca90](https://github.com/adobe/generator-tsx/commit/613ca90))
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
