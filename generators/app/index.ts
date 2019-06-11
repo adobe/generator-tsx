@@ -116,7 +116,6 @@ export = class extends Generator {
 			[
 				'@queso/kebab-case@^1',
 				'babel-plugin-relay@4',
-				'graphql-tag@2',
 				'immutability-helper@^3',
 				'react@^16',
 				'react-dom@^16',
