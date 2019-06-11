@@ -138,6 +138,8 @@ export = class ActionsGenerator extends Generator {
 		)
 
 		switch (scenario) {
+			case 'other':
+				return
 			case 'fetching data': {
 				const apiClientPath = this.destinationPath(
 					`src/api/${api}/index.ts`,
@@ -157,14 +159,15 @@ export = class ActionsGenerator extends Generator {
 				if (!this.fs.exists(modelPath)) {
 					this.composeWith('tsx:model', { name: subject })
 				}
-				const reducerPath = this.destinationPath(
-					`src/reducers/${folder}/index.ts`,
-				)
-				if (!this.fs.exists(reducerPath)) {
-					this.composeWith('tsx:reducer', { name: folder, subject, verb })
-				}
 				break
 			}
+		}
+
+		const reducerPath = this.destinationPath(
+			`src/reducers/${folder}/index.ts`,
+		)
+		if (!this.fs.exists(reducerPath)) {
+			this.composeWith('tsx:reducer', { name: folder, subject, verb })
 		}
 	}
 }

@@ -24,7 +24,10 @@ describe('tsx:actions', () => {
 					path.join(dir, 'src/actions/index.ts'),
 				)
 			})
-			.withGenerators([[helpers.createDummyGenerator(), 'tsx:api']])
+			.withGenerators([
+				[helpers.createDummyGenerator(), 'tsx:api'],
+				[helpers.createDummyGenerator(), 'tsx:reducer'],
+			])
 			.withArguments(['Bar baz'])
 			.withPrompts({
 				api: 'fakeClient',
@@ -64,6 +67,7 @@ describe('tsx:actions', () => {
 				)
 				fs.outputFileSync(path.join(dir, 'src/api/fakeClient/index.ts'), '')
 			})
+			.withGenerators([[helpers.createDummyGenerator(), 'tsx:reducer']])
 			.withArguments(['Bar baz'])
 			.withPrompts({
 				api: 'fakeClient',
