@@ -1,5 +1,12 @@
 Changelog
 
+## [0.2.2](https://github.com/adobe/generator-tsx/compare/v0.2.1...v0.2.2) (2019-06-11)
+
+
+### Bug Fixes
+
+* remove extraneous graphql-tag dependency ([83d6ec1](https://github.com/adobe/generator-tsx/commit/83d6ec1))
+
 ## [0.2.1](https://github.com/adobe/generator-tsx/compare/v0.2.0...v0.2.1) (2019-06-11)
 
 
