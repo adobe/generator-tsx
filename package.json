@@ -24,7 +24,8 @@
     "react-router",
     "react-testing-library",
     "react-intl",
-    "yeoman-generator"
+    "yeoman-generator",
+    "framework"
   ],
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
