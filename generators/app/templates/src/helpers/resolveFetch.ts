@@ -4,16 +4,6 @@ import ResponsePayload from 'models/ResponsePayload'
 
 export default async function resolveFetch<TBody extends any>(
 	fetching: Promise<Response>,
-	{
-		afterResponse = () => undefined,
-	}: {
-		/**
-		 * Runs immediately after a `Response` is received, but before any status
-		 * errors are thrown. This is an opportunity to throw custom errors that
-		 * relate specifically to expectations of this API response.
-		 */
-		afterResponse?: (response: Response) => never | void
-	} = {},
 ) {
 	let response: Response
 	try {
@@ -23,16 +13,6 @@ export default async function resolveFetch<TBody extends any>(
 			new ResponseError({
 				code: 'NO_FETCH',
 				stack: (error as Error).stack,
-			}),
-		]
-	}
-
-	afterResponse(response)
-
-	if (!response.ok) {
-		throw [
-			new ResponseError({
-				code: `STATUS_${response.status}`,
 			}),
 		]
 	}

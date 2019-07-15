@@ -1,18 +1,15 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-
-import translations from 'translations/en.json'
 
 import { render } from './reactTestingLibrary'
 
-const Foo: React.FC = () => <FormattedMessage id="test" />
+const Foo: React.FC = () => null
 
 describe('reactTestingLibrary', () => {
 	describe('render', () => {
-		it('renders translated text', () => {
-			const rendered = render(<Foo />).getByText(translations.test)
+		it('returns getByText method', () => {
+			const { getByText } = render(<Foo />)
 
-			expect(rendered).not.toBeUndefined()
+			expect(getByText).not.toBeUndefined()
 		})
 	})
 })

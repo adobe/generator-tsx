@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`globalReducer returns initial state 1`] = `
-Object {
-  "theme": Object {
-    "backgroundColor": "#282a36",
-    "foregroundColor": "#f8f8f2",
-    "linkColor": "#61dafb",
-  },
-}
-`;
+exports[`globalReducer returns initial state 1`] = `Object {}`;

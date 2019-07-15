@@ -1,26 +1,27 @@
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import { DeepPartial } from 'redux'
-import { MockStoreEnhanced } from 'redux-mock-store'
 
-import RootActions from 'actions'
+import Providers from 'components/Providers'
 import RootState from 'store/RootState'
-import createProviders from 'helpers/createProviders'
 
 import mockStore from './mockStore'
 import { CustomRenderOptions, render } from './reactTestingLibrary'
 
 interface RenderWithReduxOptions extends CustomRenderOptions {
 	state?: DeepPartial<RootState>
-	store?: MockStoreEnhanced<DeepPartial<RootState>, RootActions>
+	store?: ReturnType<typeof mockStore>
 }
 
 export default function renderWithRedux(
 	ui: ReactElement<any>,
 	options: RenderWithReduxOptions = {},
 ) {
-	const { state, store = mockStore(state) } = options
+	const { state = {}, store = mockStore(state) } = options
 	return {
-		...render(ui, { wrapper: createProviders(store), ...options }),
+		...render(ui, {
+			wrapper: ({ children }) => <Providers {...{ children, store }} />,
+			...options,
+		}),
 		store,
 	}
 }

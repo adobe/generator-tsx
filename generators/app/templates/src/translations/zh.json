@@ -1,0 +1,14 @@
+{
+  "_language": "简体中文",
+  "_region": "中国大陆",
+  "about": "关于",
+  "home.instructions": "编辑 <code>src/components/Home/Home.tsx</code> 和存入“重新加载”。",
+  "home.learn": "学React",
+  "home.learnHref": "https://zh-hans.reactjs.org/",
+  "nav.about": "关于",
+  "nav.home": "家",
+  "notFound.title": "页面无法找到",
+  "spinner": "旋转轮",
+  "test": "已翻译",
+  "toggleTheme": "切换主题"
+}

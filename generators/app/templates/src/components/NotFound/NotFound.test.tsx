@@ -1,15 +1,14 @@
 import React from 'react'
 
-import translations from 'translations/en.json'
 import { renderWithRedux } from 'utils/test'
 
 import NotFound from '.'
 
-describe('NotFound component', () => {
+describe(NotFound.name, () => {
 	it('renders "Page Not Found" title', () => {
-		expect(
-			render().getByText(translations['notFound.title']),
-		).not.toBeUndefined()
+		const { getByText } = render()
+
+		expect(getByText('Page Not Found')).not.toBeUndefined()
 	})
 
 	function render() {

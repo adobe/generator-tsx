@@ -1,4 +1,3 @@
-import { CartActions } from './cart/cartActionTypes'
 import { GlobalActions } from './global/globalActionTypes'
 
 export default RootActions
@@ -7,5 +6,5 @@ export default RootActions
 // generator to properly append new actions to it.
 // prettier-ignore
 type RootActions =
-	| CartActions
+	| { type: 'REMOVE_ME' }
 	| GlobalActions

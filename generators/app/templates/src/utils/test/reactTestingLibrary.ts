@@ -1,11 +1,10 @@
 import { ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 
-import createProviders from 'helpers/createProviders'
+import Providers from 'components/Providers'
 
 export interface CustomRenderOptions extends Omit<RenderOptions, 'queries'> {}
 
-const Providers = createProviders()
 function customRender(ui: ReactElement<any>, options?: CustomRenderOptions) {
 	return render(ui, { wrapper: Providers, ...options })
 }
