@@ -1,12 +1,18 @@
-import mockStore from './mockStore'
+import { types } from 'actions/global'
+
+import mockStore, { app, extraThunkArgument } from './mockStore'
 
 describe('mockStore', () => {
-	it('creates a store that can dispatch', () => {
+	it('creates a mock store that saves a dispatched action', () => {
 		const store = mockStore()
-		const action = { type: 'FOO' }
+		const action: types.PersistTheme = { type: 'PERSIST_THEME', name: 'dark' }
 
 		store.dispatch(action)
 
-		expect(store.getActions()).toEqual([action])
+		expect(store.getActions()[0]).toBe(action)
+	})
+
+	it('exports app === extraThunkArgument.app', () => {
+		expect(app).toBe(extraThunkArgument.app)
 	})
 })

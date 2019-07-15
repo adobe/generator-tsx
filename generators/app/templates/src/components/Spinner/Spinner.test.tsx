@@ -1,13 +1,14 @@
 import React from 'react'
 
-import translations from 'translations/en.json'
 import { renderWithRedux } from 'utils/test'
 
 import Spinner from '.'
 
-describe('Spinner component', () => {
+describe(Spinner.name, () => {
 	it('renders', () => {
-		expect(render().getByAltText(translations['spinner'])).not.toBeUndefined()
+		const { getByAltText } = render()
+
+		expect(getByAltText('Spinner')).toBeDefined()
 	})
 
 	function render() {

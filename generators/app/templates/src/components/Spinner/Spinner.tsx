@@ -7,7 +7,10 @@ import svg from './spinner.svg'
 interface SpinnerProps extends React.ObjectHTMLAttributes<HTMLObjectElement> {}
 
 const Spinner: React.FC<SpinnerProps & InjectedIntlProps> = props => {
-	const label = props.intl.formatMessage({ id: 'spinner' })
+	const label = props.intl.formatMessage({
+		id: 'spinner',
+		defaultMessage: 'Spinner',
+	})
 	return (
 		<object
 			aria-label={label}
