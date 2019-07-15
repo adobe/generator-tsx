@@ -43,7 +43,7 @@
     "coveralls": "^3.0.4",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^5.0.0",
+    "eslint-config-prettier": "^6.0.0",
     "eslint-config-xo": "^0.26.0",
     "eslint-plugin-prettier": "^3.1.0",
     "fs-extra": "^8.0.1",
