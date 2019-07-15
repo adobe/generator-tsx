@@ -5,6 +5,14 @@ node_js:
 
 cache: npm
 
+dist: trusty
+
+addons:
+  sonarcloud:
+    organization: 'adobeinc'
+    token:
+      secure: 'h5HtZYpS3kNXDlaBWCOYYKtaMC5Axbp2LauNOep1IYroSqPYaQ1fKb1bKSHHQKHjnf151OQL935lDFrh9OlEflELpiXi+wzzvdrZjKCcwyK0mVstKKeud5jnonKHDlyCQtTl3PKuuwLebuMtBLUiY21tyaO90zn+qso0I2mmcDXqb3zAOu22qFO1tRSYbtTBRc11L2wEP6zWVJjZsznVJChnOW83sCnoTME8ksf+uLiwBaeXvHzaD8Wvdb79FhO323TlLVAo4hCrotRLRawq4fgFCuYYUTKnUdYyKnv7qFCDwrP2QPnpqWWGfnDnVex7nkuAJfxtZrcesbfiGEga2f5RvjTuBPQzBzCbMAOymElogVaKggkLWEIODEwMJ4g/3KElRiU2D3Q5j4064RONRbrAGPSItaSsAEB66omB18OYrwMbpbUzy/HhS20OFhNoWFFiX5OFi0WMk16vjuYudC56mnZw3ZKu6ljXsfcQXhPQqHTrfrGFAeYADkr+af9Dor6i1gcq4550PBcS+NdP3SnkGcFOc3Ltp7O8YZi+YJ1BeksXnYMP1eipyBlhmHm6+MK9lKbTR9FkHPWfL5MNAjBPpD4WhRKZLjUHx1Mk7yVJl0yd2+6ElYLaup9ThEbOFiluHSIJ68pEG1QqmEXPIFOoEp3jF33jVCVRH5R79RA='
+
 branches:
   only:
     - master
