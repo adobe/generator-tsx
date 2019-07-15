@@ -3,18 +3,11 @@ import { DeepPartial } from 'redux'
 import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils'
 
 import RootState from 'store/RootState'
-import darkTheme from 'themes/dark'
-import translations from 'translations/en.json'
 import { renderWithRedux } from 'utils/test'
 
 import Home, { HomeProps } from '.'
 
-describe('Home', () => {
-	const defaultState = {
-		global: {
-			theme: darkTheme,
-		},
-	}
+describe(Home.name, () => {
 	let environment: ReturnType<typeof createMockEnvironment>
 
 	beforeEach(() => {
@@ -44,27 +37,6 @@ describe('Home', () => {
 		expect(rendered.getByText(`Error! ${err.message}`)).toBeDefined()
 	})
 
-	it('renders a cart subtotal from state', () => {
-		const amount = 42
-		const rendered = render({
-			state: {
-				cart: {
-					subtotal: {
-						amount,
-					},
-				},
-			},
-		})
-
-		expect(rendered.getByText(amount.toString())).toBeDefined()
-	})
-
-	it('renders translated text', () => {
-		const learnText = render().getByText(translations['home.learn'])
-
-		expect(learnText).toBeDefined()
-	})
-
 	const defaultProps: HomeProps = {}
 
 	function render({
@@ -83,7 +55,7 @@ describe('Home', () => {
 				}}
 			/>,
 			{
-				state: { ...defaultState, ...state },
+				state,
 			},
 		)
 	}

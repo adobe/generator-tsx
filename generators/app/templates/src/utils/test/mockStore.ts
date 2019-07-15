@@ -1,11 +1,17 @@
-import { DeepPartial } from 'redux'
-import configureMockStore, { MockStoreCreator } from 'redux-mock-store'
-import thunk, { ThunkMiddleware } from 'redux-thunk'
+import configureMockStore from '@jedmao/redux-mock-store'
+import Storage from '@jedmao/storage'
+import thunk, { ThunkDispatch } from 'redux-thunk'
 
 import RootActions from 'actions'
+import BrowserApp from 'BrowserApp'
 import RootState from 'store/RootState'
 
-export default (preloadedState =>
-	configureMockStore([thunk as ThunkMiddleware<RootState, RootActions>])(
-		preloadedState,
-	)) as MockStoreCreator<DeepPartial<RootState>, any>
+export const app = new BrowserApp('test', { localStorage: new Storage() })
+export const extraThunkArgument = { app }
+const middlewares = [thunk.withExtraArgument(extraThunkArgument)]
+
+export default configureMockStore<
+	RootState,
+	RootActions,
+	ThunkDispatch<RootState, typeof extraThunkArgument, RootActions>
+>(middlewares)

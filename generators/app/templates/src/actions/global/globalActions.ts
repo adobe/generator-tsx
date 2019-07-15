@@ -1,7 +1,11 @@
-import Theme from 'models/Theme'
+import ThunkAction from 'actions/ThunkAction'
+import themes from 'themes'
 
 import * as types from './globalActionTypes'
 
-export function setTheme(theme: Theme): types.SetTheme {
-	return { type: types.SET_THEME, theme }
+export function persistTheme(name: keyof typeof themes): ThunkAction<void> {
+	return async (dispatch, _getState, { app }) => {
+		dispatch({ type: types.PERSIST_THEME, name })
+		app.localStorage.setItem('theme', name)
+	}
 }

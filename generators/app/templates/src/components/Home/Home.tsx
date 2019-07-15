@@ -1,63 +1,52 @@
 import { styled } from 'linaria/react'
-import React, { useEffect } from 'react'
-import Helmet from 'react-helmet'
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl'
+import React from 'react'
+import {
+	FormattedMessage,
+	FormattedHTMLMessage,
+	injectIntl,
+	InjectedIntlProps,
+} from 'react-intl'
 import { connect } from 'react-redux'
 import { graphql } from 'babel-plugin-relay/macro'
 import { QueryRenderer } from 'react-relay'
 import { Environment } from 'relay-runtime'
 
-import { fetchCart } from 'actions/cart'
 import configEnvironment from 'config/environment'
-import useTheme from 'helpers/useTheme'
-import Theme from 'models/Theme'
 import RootState from 'store/RootState'
 
 import logo from './logo.svg'
 import Spinner from 'components/Spinner'
 import { HomeQueryResponse } from '__generated__/HomeQuery.graphql'
 
-interface StateProps extends Pick<RootState, 'cart'> {
-	theme: Theme
-}
-
-interface DispatchProps {
-	getCart(): void
-}
-
 export interface HomeProps {
 	environment?: Environment
 }
 
-const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
-	cart,
+const Home: React.FC<HomeProps & InjectedIntlProps> = ({
 	environment = configEnvironment,
-	getCart,
-	theme,
+	intl,
 }) => {
-	useEffect(() => {
-		getCart()
-	}, [getCart])
-	useTheme(theme)
 	return (
 		<Root>
-			<Helmet>
-				<title>Home</title>
-			</Helmet>
 			<Header>
 				<Logo src={logo} alt="logo" />
 				<p>
-					<FormattedHTMLMessage id="home.instructions" />
+					<FormattedHTMLMessage
+						id="home.instructions"
+						defaultMessage="Edit <code>src/components/Home/Home.tsx</code> and save to reload."
+					/>
 				</p>
 				<a
-					href="https://reactjs.org"
+					href={intl.formatMessage({
+						id: 'home.learnHref',
+						defaultMessage: 'https://reactjs.org/',
+					})}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<FormattedMessage id="home.learn" />
+					<FormattedMessage id="home.learn" defaultMessage="Learn React" />
 				</a>
-				{cart && JSON.stringify(cart.subtotal.amount)}
-				<QueryRenderer
+				<QueryRenderer<{ response: HomeQueryResponse; variables: {} }>
 					{...{
 						environment,
 						query: graphql`
@@ -66,13 +55,7 @@ const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
 							}
 						`,
 						variables: {},
-						render({
-							error,
-							props,
-						}: {
-							error: Error | null
-							props: HomeQueryResponse | null
-						}) {
+						render({ error, props }) {
 							if (error) {
 								return <div>Error! {error.message}</div>
 							}
@@ -88,15 +71,7 @@ const Home: React.FC<HomeProps & StateProps & DispatchProps> = ({
 	)
 }
 
-export default connect<StateProps, DispatchProps, void, RootState>(
-	state => ({
-		cart: state.cart,
-		theme: state.global.theme,
-	}),
-	{
-		getCart: fetchCart,
-	},
-)(Home)
+export default connect<void, void, void, RootState>(null)(injectIntl(Home))
 
 const Root = styled.div`
 	text-align: center;

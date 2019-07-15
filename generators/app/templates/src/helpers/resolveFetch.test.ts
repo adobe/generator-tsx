@@ -1,3 +1,5 @@
+import ky from 'ky-universal'
+
 import ResponseError from 'models/ResponseError'
 import ResponsePayload from 'models/ResponsePayload'
 
@@ -12,7 +14,7 @@ describe('resolveFetch', () => {
 		const expected = { foo: 'bar' }
 		global.fetch.mockResponseOnce(JSON.stringify(expected))
 
-		const successResult = await resolveFetch(fetch('noop'))
+		const successResult = await resolveFetch(ky('noop'))
 
 		expect(successResult).toEqual(expected)
 	})
@@ -23,7 +25,7 @@ describe('resolveFetch', () => {
 		expect.assertions(3)
 
 		try {
-			await resolveFetch(fetch('noop'))
+			await resolveFetch(ky('noop'))
 		} catch (errors) {
 			expect(errors!.length).toBe(1)
 			expect(errors[0] instanceof ResponseError).toBe(true)
@@ -36,11 +38,11 @@ describe('resolveFetch', () => {
 		expect.assertions(3)
 
 		try {
-			await resolveFetch(fetch('noop'))
+			await resolveFetch(ky('noop'))
 		} catch (errors) {
 			expect(errors!.length).toBe(1)
 			expect(errors[0] instanceof ResponseError).toBe(true)
-			expect(errors![0].code).toBe('API_STATUS_500')
+			expect(errors![0].code).toBe('API_NO_FETCH')
 		}
 	})
 
@@ -49,7 +51,7 @@ describe('resolveFetch', () => {
 		expect.assertions(3)
 
 		try {
-			await resolveFetch(fetch('noop'))
+			await resolveFetch(ky('noop'))
 		} catch (errors) {
 			expect(errors!.length).toBe(1)
 			expect(errors[0] instanceof ResponseError).toBe(true)
@@ -65,7 +67,7 @@ describe('resolveFetch', () => {
 		expect.assertions(5)
 
 		try {
-			await resolveFetch(fetch('noop'))
+			await resolveFetch(ky('noop'))
 		} catch (errors) {
 			expect(errors!.length).toBe(2)
 			expect(errors[0] instanceof ResponseError).toBe(true)
