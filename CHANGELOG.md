@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/adobe/generator-tsx/compare/v0.2.4...v0.3.0) (2019-07-15)
+
+
+### Features
+
+* ssr, theme context, persist theme, locale switching ([0dc2d87](https://github.com/adobe/generator-tsx/commit/0dc2d87)), closes [#15](https://github.com/adobe/generator-tsx/issues/15)
+
 ## [0.2.4](https://github.com/adobe/generator-tsx/compare/v0.2.3...v0.2.4) (2019-06-11)
 
 
