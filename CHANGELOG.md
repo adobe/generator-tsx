@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/adobe/generator-tsx/compare/v0.3.0...v0.3.1) (2019-07-16)
+
+
+### Bug Fixes
+
+* rename renderWithRedux.ts -> .tsx ([b13cfd8](https://github.com/adobe/generator-tsx/commit/b13cfd8))
+
 # [0.3.0](https://github.com/adobe/generator-tsx/compare/v0.2.4...v0.3.0) (2019-07-15)
 
 
