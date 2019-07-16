@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/adobe/generator-tsx/compare/v0.4.0...v1.0.0) (2019-07-16)
+
+
+### Bug Fixes
+
+* remove translations sub-generator ([ad984a8](https://github.com/adobe/generator-tsx/commit/ad984a8))
+
+
+### BREAKING CHANGES
+
+* translations sub-generator is no longer supported
+
 # [0.4.0](https://github.com/adobe/generator-tsx/compare/v0.3.2...v0.4.0) (2019-07-16)
 
 
