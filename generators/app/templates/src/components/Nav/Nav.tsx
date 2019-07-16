@@ -43,3 +43,5 @@ const Nav: FC<NavProps> = ({ prefix = '' }) => (
 		</ul>
 	</nav>
 )
+
+export default Nav

@@ -3,10 +3,14 @@
   "files.associations": {
     ".eslintrc.json": "jsonc"
   },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.linaria_cache": true
+  },
   "search.exclude": {
     "**/build": true,
     "**/coverge": true,
-    "**/node_modules": true,
-    "src/.linaria_cache": true
+    "**/node_modules": true
   }
 }
