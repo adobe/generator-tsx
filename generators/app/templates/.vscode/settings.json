@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "files.associations": {
+    "_redirects": "ini",
     ".eslintrc.json": "jsonc"
   },
   "files.exclude": {

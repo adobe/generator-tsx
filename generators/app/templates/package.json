@@ -49,7 +49,6 @@
   },
   "prettier": {
     "arrowParens": "avoid",
-    "ignorePath": "src/__generated__",
     "proseWrap": "always",
     "semi": false,
     "singleQuote": true,

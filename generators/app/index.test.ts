@@ -18,6 +18,30 @@ describe('tsx:app', () => {
 		assert.file(['package.json'])
 	})
 
+	it('creates files from args + prompts', async () => {
+		await helpers
+			.run(__dirname)
+			.withArguments(['APP_NAME', '0.1.2'])
+			.withPrompts({
+				gitEmail: 'GIT_EMAIL',
+				gitName: 'GIT_NAME',
+				githubUsername: 'GITHUB_USERNAME',
+			})
+		assert.file(['package.json'])
+	})
+
+	it('creates files from args + options', async () => {
+		await helpers
+			.run(__dirname)
+			.withArguments(['APP_NAME', '0.1.2'])
+			.withOptions({
+				gitEmail: 'GIT_EMAIL',
+				gitName: 'GIT_NAME',
+				githubUsername: 'GITHUB_USERNAME',
+			})
+		assert.file(['package.json'])
+	})
+
 	it('creates files from prompts', async () => {
 		await helpers.run(__dirname).withPrompts({
 			appname: 'APP_NAME',
