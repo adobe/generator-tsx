@@ -15,14 +15,14 @@ See [Design Goals](https://github.com/adobe/generator-tsx/wiki/Design-Goals).
 
 ## Features
 
--  [TypeScript](http://www.typescriptlang.org/)
--  [React](https://reactjs.org/)
-   -  [CRA](https://facebook.github.io/create-react-app/)
-   -  [Redux](https://react-redux.js.org/)
-   -  [Router](https://github.com/ReactTraining/react-router)
-   -  [Testing Library](https://github.com/testing-library/react-testing-library#react-testing-library)
-   -  [react-intl](https://github.com/formatjs/react-intl)
--  CSS in JS via [Linaria](https://linaria.now.sh/)
+- [TypeScript](http://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+  - [CRA](https://facebook.github.io/create-react-app/)
+  - [Redux](https://react-redux.js.org/)
+  - [Router](https://github.com/ReactTraining/react-router)
+  - [Testing Library](https://github.com/testing-library/react-testing-library#react-testing-library)
+  - [react-intl](https://github.com/formatjs/react-intl)
+- CSS in JS via [Linaria](https://linaria.now.sh/)
 
 ## Installation
 
@@ -53,18 +53,17 @@ Project files are generated in the `project-x` directory.
 
 All generators create project files including tests.
 
--  [tsx:actions](#actions)
--  [tsx:api](#api)
--  [tsx:component](#component)
--  [tsx:helper](#helper)
--  [tsx:model](#model)
--  [tsx:reducer](#reducer)
--  [tsx:theme](#theme)
--  [tsx:translations](#translations)
--  [tsx:util](#util)
--  [tsx:actions](#actions)
--  [tsx:actions](#actions)
--  [tsx:actions](#actions)
+- [tsx:actions](#actions)
+- [tsx:api](#api)
+- [tsx:component](#component)
+- [tsx:helper](#helper)
+- [tsx:model](#model)
+- [tsx:reducer](#reducer)
+- [tsx:theme](#theme)
+- [tsx:util](#util)
+- [tsx:actions](#actions)
+- [tsx:actions](#actions)
+- [tsx:actions](#actions)
 
 ### actions
 
@@ -131,16 +130,6 @@ yo tsx:theme foo
 Creates a theme in `src/themes/foo` that is modeled after your existing
 `src/models/Theme.ts` interface.
 
-### translations
-
-```bash
-yo tsx:translations zh-CN
-```
-
-Creates a
-[locale data file](https://github.com/formatjs/react-intl/wiki#loading-locale-data)
-in `src/translations/zh-CN.json` (copied from `en.json`).
-
 ### util
 
 ```bash
@@ -157,10 +146,10 @@ For details on our planned features and future direction, please refer to our
 
 ## Getting To Know Yeoman
 
--  Yeoman has a heart of gold.
--  Yeoman is a person with feelings and opinions, but is very easy to work with.
--  Yeoman can be too opinionated at times but is easily convinced not to be.
--  Feel free to [learn more about Yeoman](http://yeoman.io/).
+- Yeoman has a heart of gold.
+- Yeoman is a person with feelings and opinions, but is very easy to work with.
+- Yeoman can be too opinionated at times but is easily convinced not to be.
+- Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ### Contributing
 
