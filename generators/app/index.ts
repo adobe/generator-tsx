@@ -192,6 +192,7 @@ export = class extends Generator {
 				'save-dev': true,
 			},
 		)
+		this.spawnCommandSync('npm', ['audit', 'fix'])
 		this.spawnCommandSync('npm', ['run', 'postinstall'])
 	}
 }
