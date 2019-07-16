@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/adobe/generator-tsx/compare/v1.0.0...v1.0.1) (2019-07-16)
+
+
+### Bug Fixes
+
+* npm install --package-lock-only before audit fix ([0c5b8f1](https://github.com/adobe/generator-tsx/commit/0c5b8f1))
+
 # [1.0.0](https://github.com/adobe/generator-tsx/compare/v0.4.0...v1.0.0) (2019-07-16)
 
 
