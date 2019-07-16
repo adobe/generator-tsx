@@ -9,6 +9,7 @@ then your use, modification, or distribution of it requires the prior
 written permission of Adobe.
 */
 import chalk from 'chalk'
+import compact from 'lodash.compact'
 import Generator from 'yeoman-generator'
 import yosay from 'yosay'
 
@@ -20,10 +21,101 @@ interface Answers extends Generator.Answers {
 	version: string
 }
 
+type Options = Partial<
+	Answers & {
+		helpme: boolean
+	}
+>
+
 export = class extends Generator {
-	private answers = {} as Answers
+	protected answers = {} as Answers
+	public options: Options = {}
+
+	public constructor(args: string | string[], opts: Options) {
+		super(args, opts)
+		this.argument('appname', {
+			type: String,
+			description: 'project name',
+			required: false,
+		})
+		this.argument('version', {
+			type: String,
+			required: false,
+		})
+		this.options.namespace = 'yeoman:tsx'
+		this.option('githubUsername', {
+			type: String,
+			alias: 'u',
+			description: 'GitHub username',
+		})
+		this.option('gitName', {
+			type: String,
+			alias: 'n',
+			description: 'Your name (public)',
+		})
+		this.option('gitEmail', {
+			type: String,
+			alias: 'e',
+			description: 'Your email (public)',
+		})
+	}
 
 	public async prompting() {
+		const {
+			appname,
+			version,
+			githubUsername,
+			gitName,
+			gitEmail,
+		} = this.options
+
+		if (!githubUsername) {
+			try {
+				this.options.githubUsername = await this.user.github.username()
+			} catch (err) {
+				/* istanbul ignore next */
+				this.options.githubUsername = ''
+			}
+		}
+
+		this.config.defaults(this.options)
+		const gitUser = this.user.git
+
+		const questions: Generator.Questions<Answers> = compact([
+			!appname && {
+				name: 'appname',
+				message: 'project name',
+				default: this.appname,
+			},
+			!version && {
+				name: 'version',
+				message: 'version',
+				default: '0.0.0',
+			},
+			!this.options.githubUsername && /* istanbul ignore next */ {
+				name: 'githubUsername',
+				message: 'GitHub username',
+				default: githubUsername,
+				store: true,
+			},
+			!gitName && {
+				name: 'gitName',
+				message: 'Your name (public)',
+				default: gitUser.name(),
+				store: true,
+			},
+			!gitEmail && {
+				name: 'gitEmail',
+				message: 'Your email (public)',
+				default: gitUser.email(),
+				store: true,
+			},
+		])
+
+		if (!questions.length) {
+			return
+		}
+
 		this.log(yosay(`Welcome to the tiptop ${chalk.red('tsx')} generator!`))
 
 		this.log(
@@ -39,51 +131,16 @@ export = class extends Generator {
 
 		this.log()
 
-		let githubUsername: string
-		try {
-			githubUsername = await this.user.github.username()
-		} catch (err) {
-			/* istanbul ignore next */
-			githubUsername = ''
-		}
-
-		this.answers = await this.prompt([
-			{
-				name: 'appname',
-				message: 'project name',
-				default: this.appname,
-			},
-			{
-				name: 'version',
-				message: 'version',
-				default: '0.0.0',
-			},
-			{
-				name: 'githubUsername',
-				message: 'GitHub username',
-				default: githubUsername,
-				store: true,
-			},
-			{
-				name: 'gitName',
-				message: 'Your name (public)',
-				default: await this.user.git.name(),
-				store: true,
-			},
-			{
-				name: 'gitEmail',
-				message: 'Your email (public)',
-				default: await this.user.git.email(),
-				store: true,
-			},
-		])
+		this.answers = await this.prompt(questions)
 	}
 
 	public configuring() {
 		;[
+			'_redirects',
 			'.vscode',
 			'.editorconfig',
-			'_gitignore',
+			'.env.production',
+			'__gitignore',
 			'.gqlconfig',
 			'.markdownlint.json',
 			'.prettierignore',
@@ -95,18 +152,19 @@ export = class extends Generator {
 		].forEach(filename => {
 			this.fs.copy(
 				this.templatePath(filename),
-				this.destinationPath(filename.replace(/^_/, '.')),
+				this.destinationPath(filename.replace(/^__/, '.')),
 			)
 		})
 	}
 
 	public writing() {
+		const optionsPlusAnswers = { ...this.options, ...this.answers }
 		;['public', 'server', 'src', 'package.json', 'README.md'].forEach(
 			filename => {
 				this.fs.copyTpl(
 					this.templatePath(filename),
 					this.destinationPath(filename),
-					this.answers,
+					optionsPlusAnswers,
 				)
 			},
 		)

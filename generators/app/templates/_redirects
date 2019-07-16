@@ -1,0 +1,10 @@
+# https://www.netlify.com/docs/redirects/#history-pushstate-and-single-page-apps
+/*    /index.html   200
+
+# https://www.netlify.com/docs/redirects/#geoip-and-language-based-redirects
+# Redirect users in China, Hongkong or Taiwan to /china.
+# there CANNOT be spaces in the last parameter: Country=x,y,z or Language=xx,yy
+/  /china   302  Country=cn,hk,tw
+
+# Redirect users with chinese language preference from /china to /zh
+/china/*  /zh/:splat  302  Language=zh
