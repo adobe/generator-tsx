@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/adobe/generator-tsx/compare/v0.3.2...v0.4.0) (2019-07-16)
+
+
+### Features
+
+* npm audit fix after installations ([5eed0e3](https://github.com/adobe/generator-tsx/commit/5eed0e3))
+
 ## [0.3.2](https://github.com/adobe/generator-tsx/compare/v0.3.1...v0.3.2) (2019-07-16)
 
 
