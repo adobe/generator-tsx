@@ -23,15 +23,15 @@ script:
   - npm run cover
   - npm run build
   - npm link
-  - npm uninstall eslint jest
+  - cd ..
   - mkdir site
   - cd site
   - npx yo tsx site 1.2.3 -u surge -n Surge -e surge@github.com -b
-  - cd ..
+  - cp build/index.html build/200.html
 
 after_success:
+  - cd ${TRAVIS_BUILD_DIR}
   - npx codecov -f coverage/lcov.info
-  - cp site/build/index.html site/build/200.html
   - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
 
 deploy:
@@ -44,6 +44,6 @@ deploy:
     on:
       branch: master
   - provider: surge
-    project: ./site/build
+    project: ../site/build
     domain: generator-tsx.surge.sh
     skip_cleanup: true

@@ -255,12 +255,13 @@ export = class extends Generator {
 				'save-dev': true,
 			},
 		)
-		this.npmInstall([], { 'package-lock-only': true })
 	}
 
 	public end() {
+		this.spawnCommandSync('npm', ['install', '--package-lock-only'])
 		this.spawnCommandSync('npm', ['audit', 'fix'])
 		this.spawnCommandSync('npm', ['run', 'postinstall'])
+		/* istanbul ignore if */
 		if (this.options.build) {
 			this.spawnCommand('npm', ['run', 'build'])
 		}
