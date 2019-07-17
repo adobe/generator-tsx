@@ -23,7 +23,7 @@ interface Answers extends Generator.Answers {
 
 type Options = Partial<
 	Answers & {
-		helpme: boolean
+		build: boolean
 	}
 >
 
@@ -57,6 +57,11 @@ export = class extends Generator {
 			type: String,
 			alias: 'e',
 			description: 'Your email (public)',
+		})
+		this.option('build', {
+			type: Boolean,
+			alias: 'b',
+			description: 'Build after install',
 		})
 	}
 
@@ -250,8 +255,14 @@ export = class extends Generator {
 				'save-dev': true,
 			},
 		)
-		this.spawnCommandSync('npm', ['install', '--package-lock-only'])
+		this.npmInstall([], { 'package-lock-only': true })
+	}
+
+	public end() {
 		this.spawnCommandSync('npm', ['audit', 'fix'])
 		this.spawnCommandSync('npm', ['run', 'postinstall'])
+		if (this.options.build) {
+			this.spawnCommand('npm', ['run', 'build'])
+		}
 	}
 }
