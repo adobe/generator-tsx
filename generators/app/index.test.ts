@@ -38,6 +38,7 @@ describe('tsx:app', () => {
 				gitEmail: 'GIT_EMAIL',
 				gitName: 'GIT_NAME',
 				githubUsername: 'GITHUB_USERNAME',
+				build: true,
 			})
 		assert.file(['package.json'])
 	})
