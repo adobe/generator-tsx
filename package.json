@@ -154,7 +154,7 @@
     "lint": "eslint generators/**/*[!d].ts",
     "pretest": "npm run clean",
     "test": "jest --watch",
-    "precover": "rimraf coverage && npm run build",
+    "precover": "npm run clean",
     "cover": "jest --coverage",
     "prepublishOnly": "npm run build",
     "commit": "git-cz"
