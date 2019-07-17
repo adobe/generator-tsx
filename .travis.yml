@@ -21,6 +21,7 @@ branches:
 script:
   - npm run lint
   - npm run cover
+  - npm run build
   - npm link
   - npm uninstall eslint jest
   - mkdir site
