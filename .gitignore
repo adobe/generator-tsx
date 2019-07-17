@@ -6,4 +6,5 @@ generators/*.d.ts
 generators/*/*.js
 generators/*/*.d.ts
 package
+site
 .yo-rc.json
