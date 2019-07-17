@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/adobe/generator-tsx/compare/v1.1.0...v1.1.1) (2019-07-17)
+
+
+### Bug Fixes
+
+* version bump, fix coverage report ([0ceb67f](https://github.com/adobe/generator-tsx/commit/0ceb67f))
+
 ## [1.0.2](https://github.com/adobe/generator-tsx/compare/v1.0.1...v1.0.2) (2019-07-16)
 
 
