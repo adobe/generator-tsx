@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/adobe/generator-tsx/compare/v1.1.1...v1.1.2) (2019-07-19)
+
+
+### Bug Fixes
+
+* **package:** update @queso/camel-case to version 0.2.0 ([55279ed](https://github.com/adobe/generator-tsx/commit/55279ed))
+* **package:** update @queso/pick to version 0.6.0 ([ee80eb2](https://github.com/adobe/generator-tsx/commit/ee80eb2))
+* **package:** update @queso/snake-case to version 0.2.0 ([f343ee3](https://github.com/adobe/generator-tsx/commit/f343ee3))
+
 ## [1.1.1](https://github.com/adobe/generator-tsx/compare/v1.1.0...v1.1.1) (2019-07-17)
 
 
