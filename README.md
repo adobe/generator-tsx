@@ -45,10 +45,12 @@ cd project-x
 Finally, run the tsx generator to create your initial project files:
 
 ```bash
-yo tsx
+yo tsx [<appname>] [<version>] [options]
 ```
 
 Project files are generated in the `project-x` directory.
+
+Run `yo tsx --help` for more information about arguments and options.
 
 ## Sub-generators
 
@@ -88,7 +90,7 @@ Creates an API client in `src/api/foo/*`.
 ### component
 
 ```bash
-yo tsx:component Foo
+yo tsx:component Foo [--connect]
 ```
 
 Creates a [React Component](https://reactjs.org/docs/components-and-props.html)

@@ -5,14 +5,16 @@ import Nav from 'components/Nav'
 import ToggleTheme from 'components/ToggleTheme'
 import AppTheme from 'themes/AppTheme'
 
-import './Layout.css'
+import LayoutStyles from './Layout.styles'
 
 export interface LayoutProps {
 	localePath?: string
 }
 
 const Layout: FC<LayoutProps> = ({ children, localePath = '/' }) => {
-	AppTheme.context().useLayoutEffect()
+	AppTheme.context().useLayoutEffect({
+		classNames: [LayoutStyles],
+	})
 	return (
 		<>
 			<LocalesMenu />

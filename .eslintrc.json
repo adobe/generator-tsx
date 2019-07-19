@@ -44,5 +44,13 @@
       }
     ],
     "@typescript-eslint/no-use-before-define": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.test.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
 }

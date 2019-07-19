@@ -15,19 +15,123 @@ import assert from 'yeoman-assert'
 import helpers from 'yeoman-test'
 
 describe('tsx:component', () => {
-	it('creates expected component files', async () => {
-		await helpers.run(__dirname).withArguments(['Bar baz / qux quux'])
+	it('creates a CSS modules component', async () => {
+		await helpers
+			.run(__dirname)
+			.withLocalConfig({
+				promptValues: { css: 'modules' },
+			})
+			.withArguments(['Bar baz / qux quux'])
 
 		const expectedFiles = [
 			'barBaz/QuxQuux/index.ts',
-			'barBaz/QuxQuux/QuxQuux.tsx',
+			'~barBaz/QuxQuux/QuxQuux.tsx',
+			'~barBaz/QuxQuux/QuxQuux.module.css',
 			'barBaz/QuxQuux/QuxQuux.test.tsx',
 		]
 		for (const filename of expectedFiles) {
 			assert.fileContent(
-				path.join('src/components', filename),
+				path.join('src/components', filename.replace(/^~/, '')),
 				fs
-					.readFileSync(path.join(__dirname, `./expected/${filename}`))
+					.readFileSync(
+						path.join(
+							__dirname,
+							`./expected/${filename.replace(/^~/, '~modules/')}`,
+						),
+					)
+					.toString(),
+			)
+		}
+	})
+
+	it('creates connected CSS modules component', async () => {
+		await helpers
+			.run(__dirname)
+			.withLocalConfig({
+				promptValues: { css: 'modules' },
+			})
+			.withArguments(['Bar baz / qux quux'])
+			.withOptions({ connect: true })
+
+		const expectedFiles = [
+			'barBaz/QuxQuux/index.ts',
+			'~barBaz/QuxQuux/QuxQuux.tsx',
+			'~barBaz/QuxQuux/QuxQuux.module.css',
+			'barBaz/QuxQuux/QuxQuux.test.tsx',
+		]
+		for (const filename of expectedFiles) {
+			assert.fileContent(
+				path.join('src/components', filename.replace(/^~/, '')),
+				fs
+					.readFileSync(
+						path.join(
+							__dirname,
+							`./expected/${filename.replace(
+								/^~/,
+								'~modules_connect/',
+							)}`,
+						),
+					)
+					.toString(),
+			)
+		}
+	})
+
+	it('creates a Linaria component', async () => {
+		await helpers
+			.run(__dirname)
+			.withLocalConfig({
+				promptValues: { css: 'linaria' },
+			})
+			.withArguments(['Bar baz / qux quux'])
+
+		const expectedFiles = [
+			'barBaz/QuxQuux/index.ts',
+			'~barBaz/QuxQuux/QuxQuux.tsx',
+			'barBaz/QuxQuux/QuxQuux.test.tsx',
+		]
+		for (const filename of expectedFiles) {
+			assert.fileContent(
+				path.join('src/components', filename.replace(/^~/, '')),
+				fs
+					.readFileSync(
+						path.join(
+							__dirname,
+							`./expected/${filename.replace(/^~/, '~linaria/')}`,
+						),
+					)
+					.toString(),
+			)
+		}
+	})
+
+	it('creates connected Linaria component', async () => {
+		await helpers
+			.run(__dirname)
+			.withLocalConfig({
+				promptValues: { css: 'linaria' },
+			})
+			.withArguments(['Bar baz / qux quux'])
+			.withOptions({ connect: true })
+
+		const expectedFiles = [
+			'barBaz/QuxQuux/index.ts',
+			'~barBaz/QuxQuux/QuxQuux.tsx',
+			'barBaz/QuxQuux/QuxQuux.test.tsx',
+		]
+		for (const filename of expectedFiles) {
+			assert.fileContent(
+				path.join('src/components', filename.replace(/^~/, '')),
+				fs
+					.readFileSync(
+						path.join(
+							__dirname,
+							`./expected/${filename.replace(
+								/^~/,
+								`~linaria_connect/`,
+							)}`,
+						),
+					)
 					.toString(),
 			)
 		}
