@@ -64,8 +64,8 @@
     "npm": ">= 4.0.0"
   },
   "dependencies": {
+    "@queso/pick": "^0.6.0",
     "@queso/camel-case": "^0.2.0",
-    "@queso/pick": "^0.5.1",
     "@queso/snake-case": "^0.2.0",
     "chalk": "^2.4.2",
     "lodash.compact": "^3.0.1",
