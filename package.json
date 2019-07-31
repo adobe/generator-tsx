@@ -54,7 +54,7 @@
     "lint-staged": "^9.2.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
-    "semantic-release": "^15.13.18",
+    "semantic-release": "^15.13.19",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3",
     "yeoman-assert": "^3.1.1",

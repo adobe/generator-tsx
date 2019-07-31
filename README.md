@@ -4,6 +4,7 @@
 [![npm license](http://img.shields.io/npm/l/generator-tsx.svg?style=flat-square)](https://www.npmjs.org/package/generator-tsx)
 [![Travis Build Status](https://travis-ci.com/adobe/generator-tsx.svg?branch=master)](https://travis-ci.com/adobe/generator-tsx)
 [![codecov](https://codecov.io/gh/adobe/generator-tsx/branch/master/graph/badge.svg)](https://codecov.io/gh/adobe/generator-tsx)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=adobe_generator-tsx&metric=alert_status)](https://sonarcloud.io/dashboard/index/adobe_generator-tsx)
 [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/generator-tsx.svg)](https://greenkeeper.io/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ac39aa76-5042-44ed-959b-8244ddb23ae9/deploy-status)](https://app.netlify.com/sites/generator-tsx/deploys)
