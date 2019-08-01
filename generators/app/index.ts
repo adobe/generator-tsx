@@ -117,7 +117,7 @@ export = class extends Generator {
 			},
 		])
 
-		if (!questions.length) {
+		if (Array.isArray(questions) && !questions.length) {
 			return
 		}
 
