@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/adobe/generator-tsx/compare/v1.1.2...v1.1.3) (2019-08-01)
+
+
+### Bug Fixes
+
+* update dependencies and inquirer implementation ([a8f8ff8](https://github.com/adobe/generator-tsx/commit/a8f8ff8)), closes [#50](https://github.com/adobe/generator-tsx/issues/50)
+
 ## [1.1.2](https://github.com/adobe/generator-tsx/compare/v1.1.1...v1.1.2) (2019-07-19)
 
 
