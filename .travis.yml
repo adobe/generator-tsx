@@ -3,9 +3,7 @@ language: node_js
 node_js:
   - 'lts/*'
 
-cache:
-  npm: true
-  directories: '$HOME/.sonar/cache'
+cache: npm
 
 dist: trusty
 
@@ -25,7 +23,6 @@ script:
   - npm run cover
   - npm run build
   - npm link
-  - if [ ${TRAVIS_PULL_REQUEST} == false ]; then sonar-scanner; fi
   - cd ..
   - mkdir site
   - cd site
