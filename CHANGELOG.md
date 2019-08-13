@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/adobe/generator-tsx/compare/v1.1.3...v1.2.0) (2019-08-13)
+
+
+### Features
+
+* pick n' choose features ([4a386a4](https://github.com/adobe/generator-tsx/commit/4a386a4))
+
 ## [1.1.3](https://github.com/adobe/generator-tsx/compare/v1.1.2...v1.1.3) (2019-08-01)
 
 
