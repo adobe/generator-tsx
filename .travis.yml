@@ -26,7 +26,8 @@ script:
   - cd ..
   - mkdir site
   - cd site
-  - npx yo tsx site 1.2.3 -u surge -n Surge -e surge@github.com -b
+  - npx yo tsx site 1.2.3 -u surge -n Surge -e surge@github.com --css linaria
+    --gc false -b
   - cp build/index.html build/200.html
 
 after_success:

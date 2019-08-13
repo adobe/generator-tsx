@@ -16,25 +16,45 @@ import sentenceCase from '../utils'
 export = class extends Generator {
 	public options: {
 		name: string
+		connect: boolean
 	} = {
 		name: '',
+		connect: false,
 	}
 
 	public constructor(args: string | string[], opts: {}) {
 		super(args, opts)
 		this.argument('name', { type: String })
+		this.option('connect', {
+			type: Boolean,
+			alias: 'c',
+			description: 'Connect to Redux store',
+			default: false,
+		})
 	}
 
 	public writing() {
+		const { css } = this.config.get('promptValues')
 		const parts = this.options.name.split('/').map(camelCase)
 		const name = sentenceCase(parts[parts.length - 1])
 		parts.splice(-1, 1, name)
-		;['index.ts', 'Foo.tsx', 'Foo.test.tsx'].forEach(filename => {
+		const files = ['index.ts', '~Foo.tsx', 'Foo.test.tsx']
+		if (css === 'modules') {
+			files.push('~Foo.module.css')
+		}
+		files.forEach(filename => {
 			this.fs.copyTpl(
-				this.templatePath(filename),
+				this.templatePath(
+					filename.replace(
+						/^~/,
+						`~${[css, this.options.connect && 'connect']
+							.filter(Boolean)
+							.join('_')}/`,
+					),
+				),
 				this.destinationPath(
 					`src/components/${parts.join('/')}/${filename.replace(
-						/^Foo/,
+						/^~?Foo/,
 						name,
 					)}`,
 				),

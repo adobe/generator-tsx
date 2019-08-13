@@ -8,13 +8,15 @@ interface StateProps {}
 
 interface DispatchProps {}
 
-export interface QuxQuuxProps {}
+export interface <%= name %>Props {}
 
-const QuxQuux: React.FC<QuxQuuxProps & StateProps & DispatchProps> = () => (
+const <%= name %>: React.FC<<%= name %>Props & StateProps & DispatchProps> = () => (
 	<Root>content</Root>
 )
 
-export default connect<StateProps, DispatchProps, void, RootState>(null)(QuxQuux)
+export default connect<StateProps, DispatchProps, void, RootState>(null)(
+	<%= name %>,
+)
 
 const Root = styled.div`
 	display: block;

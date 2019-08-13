@@ -14,9 +14,10 @@ import { Environment } from 'relay-runtime'
 import configEnvironment from 'config/environment'
 import RootState from 'store/RootState'
 
-import logo from './logo.svg'
 import Spinner from 'components/Spinner'
 import { HomeQueryResponse } from '__generated__/HomeQuery.graphql'
+
+import logo from './logo.svg'
 
 export interface HomeProps {
 	environment?: Environment

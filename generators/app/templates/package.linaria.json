@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test"
+  },
+  "cracoConfig": "config/craco.config.js"
+}
