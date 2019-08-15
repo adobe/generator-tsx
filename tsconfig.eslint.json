@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["generators/**/templates", "generators/**/expected"]
+}
