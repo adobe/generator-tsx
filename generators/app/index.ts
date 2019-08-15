@@ -246,7 +246,6 @@ export = class AppGenerator extends Generator {
 			'@types/react-redux@^7',
 			'@types/react-router-dom@^4',
 			'@types/redux-logger@^3',
-			'@types/redux-mock-store@^1',
 			'@types/webpack-env@^1',
 			'concurrently@4',
 			'fetch-mock@^7',
