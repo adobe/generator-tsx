@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/adobe/generator-tsx/compare/v1.2.3...v1.2.4) (2019-08-15)
+
+
+### Bug Fixes
+
+* filter version to undefined if not provided ([f429528](https://github.com/adobe/generator-tsx/commit/f429528))
+* provide default version to semver.clean ([74091e5](https://github.com/adobe/generator-tsx/commit/74091e5))
+
 ## [1.2.3](https://github.com/adobe/generator-tsx/compare/v1.2.2...v1.2.3) (2019-08-15)
 
 
