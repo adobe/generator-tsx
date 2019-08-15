@@ -50,7 +50,7 @@ export default [
 		alias: 'v',
 		default: '1.0.0',
 		required: false,
-		filter: raw => semver.clean(raw || '1.0.0'),
+		filter: raw => semver.clean(raw || '') || void 0,
 		validationError: 'Invalid version format. Expected semver (e.g., 1.2.3).',
 	} as Input,
 	{
