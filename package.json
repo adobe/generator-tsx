@@ -54,14 +54,11 @@
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
-    "semantic-release": "^15.13.19",
+    "semantic-release": "^15.13.21",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^2.0.0"
-  },
-  "engines": {
-    "npm": ">= 4.0.0"
   },
   "dependencies": {
     "@queso/camel-case": "^0.2.0",

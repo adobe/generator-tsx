@@ -45,7 +45,11 @@ describe('tsx:app', () => {
 
 	it('creates expected files from args + prompts (Linaria)', async () => {
 		await run({ answers: { css: 'linaria' } })
-		assert.file(['package.json', 'src/components/Layout/Layout.styles.ts'])
+		assert.file([
+			'package.json',
+			'config/craco.config.js',
+			'src/components/Layout/Layout.styles.ts',
+		])
 	})
 
 	it('creates expected files from args + options (CSS Modules)', async () => {

@@ -145,10 +145,11 @@ export = class AppGenerator extends Generator {
 			'.watchmanconfig',
 			'tsconfig.json',
 		]
-		if (this.options.graphqlClient === 'relay') {
+		const optionsPlusAnswers = { ...this.options, ...this.answers }
+		if (optionsPlusAnswers.graphqlClient === 'relay') {
 			files.push(...['.gqlconfig', 'codegen.yml'])
 		}
-		if (this.options.css === 'linaria') {
+		if (optionsPlusAnswers.css === 'linaria') {
 			files.push('config')
 		}
 		files.forEach(filename => {
