@@ -300,11 +300,7 @@ export = class AppGenerator extends Generator {
 		if (!this.options.__test__) {
 			const optionsPlusAnswers = { ...this.options, ...this.answers }
 			this.spawnCommandSync('npm', ['install', '--package-lock-only'])
-			this.spawnCommandSync('npm', ['audit', 'fix'])
-			if (
-				optionsPlusAnswers.css === 'linaria' ||
-				optionsPlusAnswers.graphqlClient === 'relay'
-			) {
+			if (optionsPlusAnswers.graphqlClient === 'relay') {
 				this.spawnCommandSync('npm', ['run', 'postinstall'])
 			}
 			if (optionsPlusAnswers.build) {
