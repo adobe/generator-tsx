@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/adobe/generator-tsx/compare/v1.2.2...v1.2.3) (2019-08-15)
+
+
+### Bug Fixes
+
+* no audit fix, postinstall only for relay ([0461e3a](https://github.com/adobe/generator-tsx/commit/0461e3a))
+
 ## [1.2.2](https://github.com/adobe/generator-tsx/compare/v1.2.1...v1.2.2) (2019-08-15)
 
 
