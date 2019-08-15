@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/adobe/generator-tsx/compare/v1.2.0...v1.2.1) (2019-08-15)
+
+
+### Bug Fixes
+
+* use options + answers in configuring step ([a2de211](https://github.com/adobe/generator-tsx/commit/a2de211))
+
 # [1.2.0](https://github.com/adobe/generator-tsx/compare/v1.1.3...v1.2.0) (2019-08-13)
 
 
