@@ -28,4 +28,4 @@ src/.linaria_cache
 # GraphQL
 src/__generated__
 src/models/generated.tsx
-server/models.ts
+server/src/models/generated.ts

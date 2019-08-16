@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "postinstall": "cd server && npm install && npm audit fix",
+    "postinstall": "cd server && npm install",
     "clean": "concurrently \"npm:clean:skip-coverage\" \"rimraf coverage\"",
     "clean:skip-coverage": "concurrently \"rimraf build *.log*\" \"npm:clean:relay\" \"npm:clean:codegen\"",
     "prestart": "npm run clean:relay && npm run relay && npm run clean:codegen && npm run codegen",
@@ -10,7 +10,7 @@
     "clean:relay": "rimraf src/__generated__",
     "relay": "relay-compiler --src src --schema server/src/schemas/Root.gql --language typescript --artifactDirectory src/__generated__",
     "w:relay": "npm run relay -- --watch",
-    "clean:codegen": "rimraf src/models/generated.ts server/models.ts",
+    "clean:codegen": "rimraf src/models/generated.ts server/src/models/generated.ts",
     "codegen": "graphql-codegen -c codegen.yml",
     "w:codegen": "npm run codegen -- -w",
     "graphql": "cd server && npm start"
