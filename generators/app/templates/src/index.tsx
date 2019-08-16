@@ -1,8 +1,7 @@
 import React from 'react'
-import 'ts-helpers'
 
-import App from 'components/App'
-import bootstrap from 'helpers/bootstrap'
+import App from './components/App'
+import bootstrap from './helpers/bootstrap'
 
 import * as serviceWorker from './serviceWorker'
 

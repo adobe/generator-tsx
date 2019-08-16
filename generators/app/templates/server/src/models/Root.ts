@@ -1,4 +1,4 @@
-import { Query } from '../../models'
+import { Query } from './generated'
 
 export default class Root implements Query {
 	public get hello() {

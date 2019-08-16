@@ -170,7 +170,6 @@ export = class AppGenerator extends Generator {
 		const files = [
 			'public',
 			'src',
-			'package.json',
 			'README.md',
 			graphqlClient && 'server',
 			...(await resolveTildePath(css)),
@@ -195,6 +194,11 @@ export = class AppGenerator extends Generator {
 			)
 		})
 		const pkg = this.destinationPath('package.json')
+		this.fs.copyTpl(
+			this.templatePath('package.base.json'),
+			pkg,
+			optionsPlusAnswers,
+		)
 		if (css === 'linaria') {
 			this.fs.extendJSON(
 				pkg,
@@ -227,6 +231,7 @@ export = class AppGenerator extends Generator {
 			'react-theme-context@^2',
 			'redux@^4',
 			'redux-thunk@^2',
+			'tslib@1',
 		]
 		if (graphqlClient === 'relay') {
 			deps.push(...['babel-plugin-relay@5', 'react-relay@5'])
@@ -239,7 +244,7 @@ export = class AppGenerator extends Generator {
 			'@jedmao/redux-mock-store@^2',
 			'@jedmao/storage@^2',
 			'@jedmao/tsconfig',
-			'@testing-library/react@8',
+			'@testing-library/react@9',
 			'@types/fetch-mock@^7',
 			'@types/jest@^24',
 			'@types/loadable__component@^5',
@@ -261,9 +266,8 @@ export = class AppGenerator extends Generator {
 			'react-scripts@^3',
 			'redux-devtools-extension@^2',
 			'redux-logger@^3',
-			'rimraf@^2',
+			'rimraf@^3',
 			'ts-essentials@^3',
-			'ts-helpers@1',
 			'typescript@^3',
 		]
 		if (graphqlClient === 'relay') {
