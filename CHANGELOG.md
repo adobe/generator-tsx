@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/adobe/generator-tsx/compare/v1.2.5...v1.2.6) (2019-08-16)
+
+
+### Bug Fixes
+
+* ts-helpers -> tslib, improve paths ([52f39ad](https://github.com/adobe/generator-tsx/commit/52f39ad))
+
 ## [1.2.5](https://github.com/adobe/generator-tsx/compare/v1.2.4...v1.2.5) (2019-08-16)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "generator-tsx",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "CRA + TypeScript + React + Redux + Router + Testing Library",
   "homepage": "https://github.com/adobe/generator-tsx",
   "author": {
