@@ -142,6 +142,7 @@ export = class AppGenerator extends Generator {
 			'_redirects',
 			'.vscode',
 			'.editorconfig',
+			'__env',
 			'__gitignore',
 			'.markdownlint.json',
 			'.prettierignore',
