@@ -10,6 +10,8 @@ written permission of Adobe.
 */
 import pickBy from '@queso/pick-by'
 import chalk from 'chalk'
+import globby from 'globby'
+import { join } from 'path'
 import Generator from 'yeoman-generator'
 import yosay from 'yosay'
 
@@ -134,6 +136,8 @@ export = class AppGenerator extends Generator {
 	}
 
 	public configuring() {
+		const optionsPlusAnswers = { ...this.options, ...this.answers }
+		const { css, graphqlClient } = optionsPlusAnswers
 		const files = [
 			'_redirects',
 			'.vscode',
@@ -144,67 +148,68 @@ export = class AppGenerator extends Generator {
 			'.travis.yml',
 			'.watchmanconfig',
 			'tsconfig.json',
-		]
-		const optionsPlusAnswers = { ...this.options, ...this.answers }
-		if (optionsPlusAnswers.graphqlClient === 'relay') {
-			files.push(...['.gqlconfig', 'codegen.yml'])
-		}
-		if (optionsPlusAnswers.css === 'linaria') {
-			files.push('config')
-		}
+			...(graphqlClient === 'relay' ? ['.gqlconfig', 'codegen.yml'] : []),
+			css === 'linaria' && 'config',
+		].filter(Boolean) as string[]
 		files.forEach(filename => {
 			this.fs.copy(
 				this.templatePath(filename),
 				this.destinationPath(filename.replace(/^__/, '.')),
+				optionsPlusAnswers,
 			)
 		})
 	}
 
-	public writing() {
+	public async writing() {
 		const optionsPlusAnswers = { ...this.options, ...this.answers }
+		const { css, graphqlClient } = optionsPlusAnswers
 		/* istanbul ignore if */
-		if (!optionsPlusAnswers.css) {
+		if (!css) {
 			return
 		}
-		const files = ['public', 'src', 'package.json', 'README.md']
-		if (optionsPlusAnswers.graphqlClient) {
-			files.push('server')
-			files.push(
-				`~${optionsPlusAnswers.graphqlClient}_${optionsPlusAnswers.css}`,
-			)
-		} else {
-			files.push(`~${optionsPlusAnswers.css}`)
+		const files = [
+			'public',
+			'src',
+			'package.json',
+			'README.md',
+			graphqlClient && 'server',
+			...(await resolveTildePath(css)),
+			...(await resolveTildePath(graphqlClient, css)),
+		].filter(Boolean) as string[]
+
+		async function resolveTildePath(...args: (string | false)[]) {
+			return globby(join(`~${args.filter(Boolean).join('_')}`, '**'), {
+				cwd: join(__dirname, 'templates'),
+			})
 		}
+
 		files.forEach(filename => {
 			this.fs.copyTpl(
 				this.templatePath(filename),
-				this.destinationPath(filename[0] === '~' ? '.' : filename),
+				this.destinationPath(
+					filename[0] === '~'
+						? filename.replace(/^~[^/]+\//, '')
+						: filename,
+				),
 				optionsPlusAnswers,
 			)
 		})
 		const pkg = this.destinationPath('package.json')
-		if (optionsPlusAnswers.css === 'linaria') {
+		if (css === 'linaria') {
 			this.fs.extendJSON(
 				pkg,
-				optionsPlusAnswers.graphqlClient === 'relay'
-					? pkgRelayLinaria
-					: pkgLinaria,
+				graphqlClient === 'relay' ? pkgRelayLinaria : pkgLinaria,
 			)
 			this.fs.delete(
 				this.destinationPath('src/components/Layout/Layout.css'),
 			)
-			this.fs.copyTpl(
-				this.templatePath('~linaria/src'),
-				this.destinationPath('src'),
-				optionsPlusAnswers,
-			)
-		} else if (optionsPlusAnswers.graphqlClient === 'relay') {
+		} else if (graphqlClient === 'relay') {
 			this.fs.extendJSON(pkg, pkgRelayModules)
 		}
 	}
 
 	public install() {
-		const optionsPlusAnswers = { ...this.options, ...this.answers }
+		const { css, graphqlClient } = { ...this.options, ...this.answers }
 		const deps = [
 			'@loadable/component@^5',
 			'@queso/camel-case@^0',
@@ -223,7 +228,7 @@ export = class AppGenerator extends Generator {
 			'redux@^4',
 			'redux-thunk@^2',
 		]
-		if (optionsPlusAnswers.graphqlClient === 'relay') {
+		if (graphqlClient === 'relay') {
 			deps.push(...['babel-plugin-relay@5', 'react-relay@5'])
 		}
 		this.spawnCommandSync('git', ['init', '--quiet'])
@@ -261,7 +266,7 @@ export = class AppGenerator extends Generator {
 			'ts-helpers@1',
 			'typescript@^3',
 		]
-		if (optionsPlusAnswers.graphqlClient === 'relay') {
+		if (graphqlClient === 'relay') {
 			devDeps.push(
 				...[
 					'@graphql-codegen/cli@1',
@@ -281,7 +286,7 @@ export = class AppGenerator extends Generator {
 				],
 			)
 		}
-		if (optionsPlusAnswers.css === 'linaria') {
+		if (css === 'linaria') {
 			devDeps.push(
 				...[
 					'@craco/craco@5',
