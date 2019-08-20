@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.9](https://github.com/adobe/generator-tsx/compare/v1.2.8...v1.2.9) (2019-08-20)
+
+
+### Bug Fixes
+
+* ts import resolution, remove relay line from non-relay install ([1c74810](https://github.com/adobe/generator-tsx/commit/1c74810))
+
 ## [1.2.8](https://github.com/adobe/generator-tsx/compare/v1.2.7...v1.2.8) (2019-08-19)
 
 
