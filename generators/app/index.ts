@@ -174,6 +174,7 @@ export = class AppGenerator extends Generator {
 			'README.md',
 			graphqlClient && 'server',
 			...(await resolveTildePath(css)),
+			...(await resolveTildePath(graphqlClient)),
 			...(await resolveTildePath(graphqlClient, css)),
 		].filter(Boolean) as string[]
 
