@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/adobe/generator-tsx/compare/v1.2.9...v2.0.0) (2019-08-22)
+
+
+### Features
+
+* upgrade react-intl, migrate to @reach/router ([fd6d25c](https://github.com/adobe/generator-tsx/commit/fd6d25c))
+
+
+### BREAKING CHANGES
+
+* The next React Router API, on the surface, looks more
+like @reach/router than React Router. The migration to the @reach/router
+API prepares us for this change. See the following articles:
+- https://reacttraining.com/blog/reach-react-router-future/
+- https://github.com/formatjs/react-intl/blob/master/docs/Upgrade-Guide.md
+
 ## [1.2.9](https://github.com/adobe/generator-tsx/compare/v1.2.8...v1.2.9) (2019-08-20)
 
 
