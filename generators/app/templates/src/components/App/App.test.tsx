@@ -1,17 +1,17 @@
 import React from 'react'
 
-import { renderWithRedux } from 'utils/test'
+import { renderWithRouter } from 'utils/test'
 
 import App from '.'
 
 describe(App.name, () => {
 	it('renders "Learn React"', async () => {
-		const { findByText } = render()
+		const { getByText } = render()
 
-		expect(await findByText('Learn React')).toBeDefined()
+		expect(getByText('Learn React')).toBeDefined()
 	})
 
 	function render() {
-		return renderWithRedux(<App />)
+		return renderWithRouter(<App />)
 	}
 })

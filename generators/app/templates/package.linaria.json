@@ -2,7 +2,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test"
   },
   "cracoConfig": "config/craco.config.js"
 }

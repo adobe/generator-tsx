@@ -9,7 +9,7 @@ describe('reactTestingLibrary', () => {
 		it('returns getByText method', () => {
 			const { getByText } = render(<Foo />)
 
-			expect(getByText).not.toBeUndefined()
+			expect(getByText).toBeDefined()
 		})
 	})
 })

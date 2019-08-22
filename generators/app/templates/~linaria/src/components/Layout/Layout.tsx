@@ -1,27 +1,31 @@
+import { RouteComponentProps } from '@reach/router'
 import React, { FC } from 'react'
+import { RawIntlProvider } from 'react-intl'
 
 import LocalesMenu from 'components/LocalesMenu'
 import Nav from 'components/Nav'
 import ToggleTheme from 'components/ToggleTheme'
+import { createIntl } from 'helpers/intl'
+import Locale from 'models/Locale'
 import AppTheme from 'themes/AppTheme'
 
 import LayoutStyles from './Layout.styles'
 
-export interface LayoutProps {
-	localePath?: string
+export interface LayoutProps extends RouteComponentProps {
+	locale?: Locale
 }
 
-const Layout: FC<LayoutProps> = ({ children, localePath = '/' }) => {
+const Layout: FC<LayoutProps> = ({ children, locale = 'en' }) => {
 	AppTheme.context().useLayoutEffect({
 		classNames: [LayoutStyles],
 	})
 	return (
-		<>
+		<RawIntlProvider value={createIntl(locale)}>
 			<LocalesMenu />
 			<ToggleTheme />
-			<Nav prefix={localePath} />
+			<Nav />
 			{children}
-		</>
+		</RawIntlProvider>
 	)
 }
 

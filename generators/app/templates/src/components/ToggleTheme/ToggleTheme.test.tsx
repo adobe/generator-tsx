@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render as _render } from 'utils/test'
+import { fireEvent, renderWithRedux } from 'utils/test'
 
 import themes from 'themes'
 import AppTheme from 'themes/AppTheme'
@@ -45,7 +45,7 @@ describe(ToggleTheme.name, () => {
 			themeContext.useLayoutEffect()
 			return <ToggleTheme {...{ persistTheme }} />
 		}
-		return _render(
+		return renderWithRedux(
 			<themeContext.Provider>
 				<App />
 			</themeContext.Provider>,

@@ -1,9 +1,11 @@
+import { RouteComponentProps } from '@reach/router'
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import {
 	FormattedMessage,
 	FormattedHTMLMessage,
 	injectIntl,
-	InjectedIntlProps,
+	IntlShape,
 } from 'react-intl'
 import { connect } from 'react-redux'
 
@@ -12,9 +14,19 @@ import RootState from 'store/RootState'
 import styles from './Home.module.css'
 import logo from './logo.svg'
 
-const Home: React.FC<InjectedIntlProps> = ({ intl }) => {
+export interface HomeProps extends RouteComponentProps {}
+
+const Home: React.FC<HomeProps & { intl: IntlShape }> = ({ intl }) => {
 	return (
 		<div className={styles.root}>
+			<Helmet>
+				<title>
+					{intl.formatMessage({
+						id: 'nav.home',
+						defaultMessage: 'Home',
+					})}
+				</title>
+			</Helmet>
 			<div className={styles.header}>
 				<img className={styles.logo} src={logo} alt="logo" />
 				<p>

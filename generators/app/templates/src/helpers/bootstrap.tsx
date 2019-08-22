@@ -38,7 +38,7 @@ export default async function bootstrap(
 		function render(hydrate = false) {
 			ReactDOM[hydrate && !module.hot ? 'hydrate' : 'render'](
 				<themeContext.Provider>
-					<Providers store={store}>{renderRoot(store)}</Providers>
+					<Providers store={store} children={renderRoot(store)} />
 				</themeContext.Provider>,
 				document.getElementById('root'),
 				() => resolve({ app, store }),

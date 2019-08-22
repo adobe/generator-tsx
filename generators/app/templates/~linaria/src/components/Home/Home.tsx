@@ -1,10 +1,12 @@
+import { RouteComponentProps } from '@reach/router'
 import { styled } from 'linaria/react'
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import {
 	FormattedMessage,
 	FormattedHTMLMessage,
 	injectIntl,
-	InjectedIntlProps,
+	IntlShape,
 } from 'react-intl'
 import { connect } from 'react-redux'
 
@@ -12,9 +14,19 @@ import RootState from 'store/RootState'
 
 import logo from './logo.svg'
 
-const Home: React.FC<InjectedIntlProps> = ({ intl }) => {
+export interface HomeProps extends RouteComponentProps {}
+
+const Home: React.FC<HomeProps & { intl: IntlShape }> = ({ intl }) => {
 	return (
 		<Root>
+			<Helmet>
+				<title>
+					{intl.formatMessage({
+						id: 'nav.home',
+						defaultMessage: 'Home',
+					})}
+				</title>
+			</Helmet>
 			<Header>
 				<Logo src={logo} alt="logo" />
 				<p>

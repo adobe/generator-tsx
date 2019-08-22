@@ -11,7 +11,7 @@ branches:
 
 script:
   - npm run check-types
-  - npm test -- --coverage
+  - npm test -- --coverage || cat coverage/lcov.info
 
 after_success:
   - npx codecov -f coverage/lcov.info
