@@ -15,15 +15,16 @@ A TypeScript/React starter project, bootstrapped with
 The following features are included to align with the
 [Magento Front-End Technical Vision](https://github.com/magento/architecture/blob/master/design-documents/frontend/technical-vision.md#front-end-technical-vision):
 
--  [CRA](https://facebook.github.io/create-react-app/)
--  [TypeScript](http://www.typescriptlang.org/)
--  [React](https://reactjs.org/)
--  [React Redux](https://react-redux.js.org/)
--  [Redux Thunk](https://github.com/reduxjs/redux-thunk#redux-thunk)
--  [React Router](https://reacttraining.com/react-router/)
--  [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
--  [React Intl](https://github.com/formatjs/react-intl#react-intl)
--  [Prettier](https://prettier.io/)
+- [CRA](https://facebook.github.io/create-react-app/)
+- [TypeScript](http://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [React Redux](https://react-redux.js.org/)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk#redux-thunk)
+- [Reach Router](https://reach.tech/router) (see
+  [The Future of React Router and @reach/router](https://reacttraining.com/blog/reach-react-router-future/))
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [React Intl](https://github.com/formatjs/react-intl#react-intl)
+- [Prettier](https://prettier.io/)
 
 ## Available Scripts
 
@@ -55,6 +56,13 @@ ready to be deployed!
 See the section about
 [deployment](https://facebook.github.io/create-react-app/docs/deployment) for
 more information.
+
+For server-side i18n support, you'll need to
+[run the server with full-icu data](https://github.com/formatjs/react-intl/blob/master/docs/Getting-Started.md#nodejs):
+
+```bash
+NODE_ICU_DATA=$(npx node-full-icu-path) serve -s build
+```
 
 ### `npm run eject`
 

@@ -1,3 +1,3 @@
-type Locale = 'zh'
+type Locale = 'en' | 'zh'
 
 export default Locale

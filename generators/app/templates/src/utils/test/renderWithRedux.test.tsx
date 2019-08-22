@@ -21,7 +21,7 @@ describe('renderWithRedux', () => {
 	it('renders an unconnected component', () => {
 		const rendered = renderWithRedux(<Foo />).getByText('NOT_FROM_STATE')
 
-		expect(rendered).not.toBeUndefined()
+		expect(rendered).toBeDefined()
 	})
 
 	it("renders connected component's prop from state", () => {
@@ -31,6 +31,6 @@ describe('renderWithRedux', () => {
 			} as FakeState) as any,
 		}).getByText('FROM_STATE')
 
-		expect(rendered).not.toBeUndefined()
+		expect(rendered).toBeDefined()
 	})
 })

@@ -1,10 +1,12 @@
+import { RouteComponentProps } from '@reach/router'
 import { styled } from 'linaria/react'
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import {
 	FormattedMessage,
 	FormattedHTMLMessage,
 	injectIntl,
-	InjectedIntlProps,
+	IntlShape,
 } from 'react-intl'
 import { connect } from 'react-redux'
 import { graphql } from 'babel-plugin-relay/macro'
@@ -19,16 +21,24 @@ import { HomeQueryResponse } from '__generated__/HomeQuery.graphql'
 
 import logo from './logo.svg'
 
-export interface HomeProps {
+export interface HomeProps extends RouteComponentProps {
 	environment?: Environment
 }
 
-const Home: React.FC<HomeProps & InjectedIntlProps> = ({
+const Home: React.FC<HomeProps & { intl: IntlShape }> = ({
 	environment = configEnvironment,
 	intl,
 }) => {
 	return (
 		<Root>
+			<Helmet>
+				<title>
+					{intl.formatMessage({
+						id: 'nav.home',
+						defaultMessage: 'Home',
+					})}
+				</title>
+			</Helmet>
 			<Header>
 				<Logo src={logo} alt="logo" />
 				<p>

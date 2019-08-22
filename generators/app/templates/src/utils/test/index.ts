@@ -1,4 +1,7 @@
 export { default as mockStore } from './mockStore'
 export * from './mockStore'
 export * from './reactTestingLibrary'
+export * from './renderWithRedux'
 export { default as renderWithRedux } from './renderWithRedux'
+export * from './renderWithRouter'
+export { default as renderWithRouter } from './renderWithRouter'

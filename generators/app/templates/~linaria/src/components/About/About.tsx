@@ -1,9 +1,12 @@
+import { RouteComponentProps } from '@reach/router'
 import { styled } from 'linaria/react'
 import React from 'react'
-import Helmet from 'react-helmet'
-import { injectIntl, InjectedIntlProps } from 'react-intl'
+import { Helmet } from 'react-helmet-async'
+import { injectIntl, IntlShape } from 'react-intl'
 
-const About: React.FC<InjectedIntlProps> = props => {
+export interface AboutProps extends RouteComponentProps {}
+
+const About: React.FC<AboutProps & { intl: IntlShape }> = props => {
 	const title = props.intl.formatMessage({
 		id: 'about',
 		defaultMessage: 'About',

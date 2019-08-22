@@ -10,12 +10,12 @@
   "bugs": {
     "url": "https://github.com/<%= githubUsername %>/<%= appname %>/issues"
   },
-  "homepage": "https://github.com/<%= githubUsername %>/<%= appname %>#readme",
   "scripts": {
     "clean": "rimraf build *.log* coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "postbuild": "cp _redirects build",
+    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) react-scripts test",
     "eject": "react-scripts eject",
     "check-types": "tsc --noEmit"
   },
@@ -26,13 +26,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.{js,jsx}": [
-      "git reset"
-    ]
+    "src/**/*.{ts,tsx,json,css,md}": ["prettier --write", "git add"],
+    "src/**/*.{js,jsx}": ["git reset"]
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -58,9 +53,9 @@
         "functions": 100
       }
     },
-    "coverageReporters": [
-      "json",
-      "lcov"
+    "coverageReporters": ["json", "lcov"],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!intl-messageformat|intl-messageformat-parser).+\\.js$"
     ]
   },
   "eslintConfig": {
@@ -77,10 +72,5 @@
       "require-atomic-updates": "error"
     }
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }

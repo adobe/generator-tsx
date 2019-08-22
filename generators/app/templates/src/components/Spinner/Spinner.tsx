@@ -1,12 +1,12 @@
 import React from 'react'
-import { injectIntl, InjectedIntlProps } from 'react-intl'
+import { injectIntl, IntlShape } from 'react-intl'
 
 import gif from './spinner.gif'
 import svg from './spinner.svg'
 
 interface SpinnerProps extends React.ObjectHTMLAttributes<HTMLObjectElement> {}
 
-const Spinner: React.FC<SpinnerProps & InjectedIntlProps> = props => {
+const Spinner: React.FC<SpinnerProps & { intl: IntlShape }> = props => {
 	const label = props.intl.formatMessage({
 		id: 'spinner',
 		defaultMessage: 'Spinner',

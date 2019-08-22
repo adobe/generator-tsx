@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import Helmet from 'react-helmet'
-import { injectIntl, InjectedIntlProps } from 'react-intl'
+import { Helmet } from 'react-helmet-async'
+import { injectIntl, IntlShape } from 'react-intl'
 
-const NotFound: FC<InjectedIntlProps> = props => {
+const NotFound: FC<{ intl: IntlShape }> = props => {
 	const title = props.intl.formatMessage({
 		id: 'notFound.title',
 		defaultMessage: 'Page Not Found',

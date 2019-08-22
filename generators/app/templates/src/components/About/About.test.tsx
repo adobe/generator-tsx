@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { renderWithRedux, wait } from 'utils/test'
 
 import About from '.'
