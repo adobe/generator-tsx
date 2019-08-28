@@ -1,4 +1,6 @@
 import React from 'react'
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
 
 import App from './components/App'
 import bootstrap from './helpers/bootstrap'
