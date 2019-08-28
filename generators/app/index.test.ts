@@ -47,7 +47,7 @@ describe('tsx:app', () => {
 		await run({ answers: { css: 'linaria' } })
 		assert.file([
 			'package.json',
-			'config/craco.config.js',
+			'craco.config.js',
 			'src/components/Layout/Layout.styles.ts',
 		])
 	})
