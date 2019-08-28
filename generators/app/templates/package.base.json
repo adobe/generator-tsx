@@ -12,10 +12,10 @@
   },
   "scripts": {
     "clean": "rimraf build *.log* coverage",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "craco start",
+    "build": "craco build",
     "postbuild": "cp _redirects build",
-    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) react-scripts test",
+    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test",
     "eject": "react-scripts eject",
     "check-types": "tsc --noEmit"
   },
@@ -26,8 +26,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,json,css,md}": ["prettier --write", "git add"],
-    "src/**/*.{js,jsx}": ["git reset"]
+    "src/**/*.{ts,tsx,json,css,md}": ["prettier --write", "git add"]
   },
   "prettier": {
     "arrowParens": "avoid",

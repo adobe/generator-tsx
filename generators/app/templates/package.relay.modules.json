@@ -4,7 +4,7 @@
     "clean": "concurrently \"npm:clean:skip-coverage\" \"rimraf coverage\"",
     "clean:skip-coverage": "concurrently \"rimraf build *.log*\" \"npm:clean:relay\" \"npm:clean:codegen\"",
     "prestart": "npm run clean:relay && npm run relay && npm run clean:codegen && npm run codegen",
-    "start": "concurrently \"npm:graphql\" \"react-scripts start\" \"npm:w:relay\" \"npm:w:codegen\"",
+    "start": "concurrently \"npm:graphql\" \"craco start\" \"npm:w:relay\" \"npm:w:codegen\"",
     "prebuild": "npm run clean:skip-coverage && npm run relay && npm run codegen",
     "precheck-types": "npm run relay",
     "clean:relay": "rimraf src/__generated__",

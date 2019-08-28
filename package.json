@@ -21,7 +21,7 @@
     "typescript",
     "react",
     "react-redux",
-    "react-router",
+    "router",
     "react-testing-library",
     "react-intl",
     "yeoman-generator",
