@@ -17,7 +17,6 @@
     "w:codegen": "npm run codegen -- -w",
     "graphql": "cd server && npm start"
   },
-  "cracoConfig": "config/craco.config.js",
   "babelMacros": {
     "relay": {
       "artifactDirectory": "src/__generated__"

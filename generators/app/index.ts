@@ -147,9 +147,9 @@ export = class AppGenerator extends Generator {
 			'.prettierignore',
 			'.travis.yml',
 			'.watchmanconfig',
+			css === 'linaria' && 'craco.config.js',
 			'tsconfig.json',
 			...(graphqlClient === 'relay' ? ['.gqlconfig', 'codegen.yml'] : []),
-			css === 'linaria' && 'config',
 		].filter(Boolean) as string[]
 		files.forEach(filename => {
 			this.fs.copy(
@@ -236,7 +236,7 @@ export = class AppGenerator extends Generator {
 			'tslib@^1',
 		]
 		if (graphqlClient === 'relay') {
-			deps.push(...['babel-plugin-relay@5', 'react-relay@5'])
+			deps.push(...['babel-plugin-relay@^5', 'react-relay@^5'])
 		}
 		this.spawnCommandSync('git', ['init', '--quiet'])
 		this.npmInstall(deps, {
@@ -275,29 +275,30 @@ export = class AppGenerator extends Generator {
 		if (graphqlClient === 'relay') {
 			devDeps.push(
 				...[
-					'@graphql-codegen/cli@1',
-					'@graphql-codegen/introspection@1',
-					'@graphql-codegen/typescript@1',
-					'@graphql-codegen/typescript-graphql-files-modules@1',
-					'@graphql-codegen/typescript-operations@1',
-					'@graphql-codegen/typescript-resolvers@1',
-					'@playlyfe/gql@2',
-					'@types/graphql@14',
-					'@types/react-relay@5',
-					'graphql@14',
+					'@graphql-codegen/cli@^1',
+					'@graphql-codegen/introspection@^1',
+					'@graphql-codegen/typescript@^1',
+					'@graphql-codegen/typescript-graphql-files-modules@^1',
+					'@graphql-codegen/typescript-operations@^1',
+					'@graphql-codegen/typescript-resolvers@^1',
+					'@playlyfe/gql@^2',
+					'@types/graphql@^14',
+					'@types/react-relay@^5',
+					'graphql@^14',
 					'graphql-tag-pluck@^0',
-					'relay-compiler@5',
-					'relay-compiler-language-typescript@4',
-					'relay-test-utils@5',
+					'relay-compiler@^5',
+					'relay-compiler-language-typescript@^4',
+					'relay-test-utils@^5',
 				],
 			)
 		}
 		if (css === 'linaria') {
 			devDeps.push(
 				...[
-					'@craco/craco@5',
-					'core-js@2', // TODO: https://github.com/callstack/linaria/issues/420
-					'linaria@1',
+					'@craco/craco@^5',
+					'core-js@^2', // TODO: https://github.com/callstack/linaria/issues/420
+					'craco-linaria@^1',
+					'linaria@^1',
 				],
 			)
 		}
