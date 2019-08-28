@@ -17,7 +17,6 @@ import yosay from 'yosay'
 
 import inputs, { Answers } from './inputs'
 
-import pkgLinaria from './templates/package.linaria.json'
 import pkgRelayLinaria from './templates/package.relay.linaria.json'
 import pkgRelayModules from './templates/package.relay.modules.json'
 
@@ -137,17 +136,16 @@ export = class AppGenerator extends Generator {
 
 	public configuring() {
 		const optionsPlusAnswers = { ...this.options, ...this.answers }
-		const { css, graphqlClient } = optionsPlusAnswers
+		const { graphqlClient } = optionsPlusAnswers
 		const files = [
 			'_redirects',
 			'.vscode',
 			'.editorconfig',
 			'__gitignore',
-			'.markdownlint.json',
 			'.prettierignore',
 			'.travis.yml',
 			'.watchmanconfig',
-			css === 'linaria' && 'craco.config.js',
+			'craco.config.js',
 			'tsconfig.json',
 			...(graphqlClient === 'relay' ? ['.gqlconfig', 'codegen.yml'] : []),
 		].filter(Boolean) as string[]
@@ -201,10 +199,9 @@ export = class AppGenerator extends Generator {
 			optionsPlusAnswers,
 		)
 		if (css === 'linaria') {
-			this.fs.extendJSON(
-				pkg,
-				graphqlClient === 'relay' ? pkgRelayLinaria : pkgLinaria,
-			)
+			if (graphqlClient === 'relay') {
+				this.fs.extendJSON(pkg, pkgRelayLinaria)
+			}
 			this.fs.delete(
 				this.destinationPath('src/components/Layout/Layout.css'),
 			)
@@ -243,6 +240,7 @@ export = class AppGenerator extends Generator {
 			save: true,
 		})
 		const devDeps = [
+			'@craco/craco@^5',
 			'@jedmao/redux-mock-store@^2',
 			'@jedmao/storage@^2',
 			'@jedmao/tsconfig',
@@ -295,7 +293,6 @@ export = class AppGenerator extends Generator {
 		if (css === 'linaria') {
 			devDeps.push(
 				...[
-					'@craco/craco@^5',
 					'core-js@^2', // TODO: https://github.com/callstack/linaria/issues/420
 					'craco-linaria@^1',
 					'linaria@^1',

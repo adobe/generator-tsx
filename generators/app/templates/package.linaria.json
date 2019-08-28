@@ -1,7 +1,0 @@
-{
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test"
-  }
-}

@@ -20,7 +20,7 @@ See [Design Goals](https://github.com/adobe/generator-tsx/wiki/Design-Goals).
 - [React](https://reactjs.org/)
   - [CRA](https://facebook.github.io/create-react-app/)
   - [Redux](https://react-redux.js.org/)
-  - [Router](https://github.com/ReactTraining/react-router)
+  - [Router](https://www.npmjs.com/package/@reach/router)
   - [Testing Library](https://github.com/testing-library/react-testing-library#react-testing-library)
   - [react-intl](https://github.com/formatjs/react-intl)
 - CSS in JS via [Linaria](https://linaria.now.sh/)
