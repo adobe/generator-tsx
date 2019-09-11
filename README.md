@@ -1,12 +1,15 @@
 # TSX Yeoman Generator
 
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 [![NPM version](http://img.shields.io/npm/v/generator-tsx.svg?style=flat)](https://www.npmjs.org/package/generator-tsx)
 [![npm license](http://img.shields.io/npm/l/generator-tsx.svg?style=flat-square)](https://www.npmjs.org/package/generator-tsx)
-[![Travis Build Status](https://travis-ci.com/adobe/generator-tsx.svg?branch=master)](https://travis-ci.com/adobe/generator-tsx)
 [![codecov](https://codecov.io/gh/adobe/generator-tsx/branch/master/graph/badge.svg)](https://codecov.io/gh/adobe/generator-tsx)
 [![Greenkeeper badge](https://badges.greenkeeper.io/adobe/generator-tsx.svg)](https://greenkeeper.io/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ac39aa76-5042-44ed-959b-8244ddb23ae9/deploy-status)](https://app.netlify.com/sites/generator-tsx/deploys)
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 ![screenshot](screenshot.png)
 
@@ -24,6 +27,15 @@ See [Design Goals](https://github.com/adobe/generator-tsx/wiki/Design-Goals).
   - [Testing Library](https://github.com/testing-library/react-testing-library#react-testing-library)
   - [react-intl](https://github.com/formatjs/react-intl)
 - CSS in JS via [Linaria](https://linaria.now.sh/)
+
+## Configuration
+
+Add the following
+[GitHub secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables)
+to your repo:
+
+- `CODECOV_TOKEN`
+- `NPM_TOKEN`
 
 ## Installation
 
