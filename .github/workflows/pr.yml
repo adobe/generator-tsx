@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: npm install, check-types, test/cover, build
-        run: npm install && npm run cover || cat coverage/lcov.info && npm run build
+        run: npm install && npm run cover && npm run build || cat coverage/lcov.info
         env:
           CI: true
       - name: upload coverage report

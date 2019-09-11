@@ -32,7 +32,7 @@ jobs:
         if: success()
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: npx codecov -f coverage/lcov.info
+        run: npx codecov -f coverage/lcov.info || cat coverage/lcov.info
       - name: release
         if: success()
         env:
