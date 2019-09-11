@@ -5,9 +5,9 @@ import { RawIntlProvider } from 'react-intl'
 import LocalesMenu from 'components/LocalesMenu'
 import Nav from 'components/Nav'
 import ToggleTheme from 'components/ToggleTheme'
-import { createIntl } from 'helpers/intl'
 import Locale from 'models/Locale'
 import AppTheme from 'themes/AppTheme'
+import { createIntl } from 'utils/intl'
 
 import './Layout.css'
 

@@ -39,10 +39,10 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!<rootDir>/node_modules/",
-      "!src/helpers/bootstrap.tsx",
       "!src/index.tsx",
       "!src/serviceWorker.ts",
-      "!src/themes"
+      "!src/themes",
+      "!src/utils/bootstrap.tsx"
     ],
     "coverageThreshold": {
       "global": {

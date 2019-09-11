@@ -3,7 +3,7 @@ import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 
 import App from './components/App'
-import bootstrap from './helpers/bootstrap'
+import bootstrap from './utils/bootstrap'
 
 import * as serviceWorker from './serviceWorker'
 

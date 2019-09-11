@@ -1,8 +1,8 @@
 import update from 'immutability-helper'
 
 import { types } from 'actions/barBaz'
-import createReducer from 'helpers/createReducer'
 import FakeState from 'models/FakeState'
+import createReducer from 'utils/createReducer'
 
 export interface BarBazState {
 	fakeState: FakeState

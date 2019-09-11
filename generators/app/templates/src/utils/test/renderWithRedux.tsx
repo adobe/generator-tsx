@@ -7,7 +7,7 @@ import RootState from 'store/RootState'
 
 import mockStore from './mockStore'
 import { CustomRenderOptions, render } from './reactTestingLibrary'
-import { createIntl } from 'helpers/intl'
+import { createIntl } from 'utils/intl'
 
 export interface RenderWithReduxOptions extends CustomRenderOptions {
 	state?: DeepPartial<RootState>
