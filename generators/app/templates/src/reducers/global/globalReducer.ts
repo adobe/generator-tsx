@@ -1,5 +1,5 @@
 import { types } from 'actions/global'
-import createReducer from 'helpers/createReducer'
+import createReducer from 'utils/createReducer'
 
 const defaultState = {}
 

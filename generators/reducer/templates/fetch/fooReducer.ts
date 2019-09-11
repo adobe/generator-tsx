@@ -1,8 +1,8 @@
 import update from 'immutability-helper'
 
 import { types } from 'actions/<%= name %>'
-import createReducer from 'helpers/createReducer'
 import <%= sentenceCase(subject) %> from 'models/<%= sentenceCase(subject) %>'
+import createReducer from 'utils/createReducer'
 
 export interface <%= sentenceCase(name) %>State extends <%= sentenceCase(subject) %> {
 	errors: Error[]

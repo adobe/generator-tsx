@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { DeepReadonly } from 'ts-essentials'
 
-import createReducer from 'helpers/createReducer'
+import createReducer from 'utils/createReducer'
 
 import testReducer from './testReducer'
 
