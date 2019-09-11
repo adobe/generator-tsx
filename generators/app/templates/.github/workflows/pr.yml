@@ -1,0 +1,33 @@
+name: Node CI
+
+on: pull_request
+
+jobs:
+  test:
+    name: Test on node ${{ matrix.node }} and ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node: [8, 10, 12]
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: npm install, check-types, test/cover, build
+        run: npm install && npm run check-types && npm test -- --coverage || cat coverage/lcov.info && npm run build
+        env:
+          CI: true
+      - name: upload coverage report
+        if: success()
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: npx codecov -f coverage/lcov.info

@@ -6,7 +6,7 @@
     "prestart": "npm run clean:relay && npm run relay && npm run clean:codegen && npm run codegen",
     "start": "concurrently \"npm:graphql\" \"npm:craco\" \"npm:w:relay\" \"npm:w:codegen\"",
     "prebuild": "npm run clean:skip-coverage && npm run relay && npm run codegen",
-    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test",
+    "test": "bash -c 'npx cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test'",
     "clean:relay": "rimraf src/__generated__",
     "relay": "relay-compiler --src src --schema server/src/schemas/Root.gql --language typescript --artifactDirectory src/__generated__",
     "w:relay": "npm run relay -- --watch",

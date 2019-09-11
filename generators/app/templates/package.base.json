@@ -15,7 +15,7 @@
     "start": "craco start",
     "build": "craco build",
     "postbuild": "cp _redirects build",
-    "test": "cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test",
+    "test": "bash -c 'npx cross-env NODE_ICU_DATA=$(npx node-full-icu-path) craco test'",
     "eject": "react-scripts eject",
     "check-types": "tsc --noEmit"
   },

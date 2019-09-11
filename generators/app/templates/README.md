@@ -1,11 +1,13 @@
 # <%= appname %>
 
-[![Travis Build Status](https://img.shields.io/travis/<%= githubUsername %>/<%=
-appname %>.svg)](https://travis-ci.org/<%= githubUsername %>/<%= appname %>)
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 [![codecov](https://codecov.io/gh/<%= githubUsername %>/<%= appname
 %>/branch/master/graph/badge.svg)](https://codecov.io/gh/<%= githubUsername
 %>/<%= appname %>)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 A TypeScript/React starter project, bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
