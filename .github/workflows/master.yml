@@ -51,7 +51,17 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: release
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://github.com/generator-tsx.git
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: npm install
+        env:
+          CI: true
+      - name: npm run build
+        if: success()
+      - name: Configure NPM_TOKEN
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
