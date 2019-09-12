@@ -18,25 +18,27 @@ jobs:
 
     steps:
       - name: clone
-        run: git config --global core.autocrlf false && git clone https://github.com/${GITHUB_REPOSITORY}.git && cd $GITHUB_WORKSPACE && git fetch && git checkout $GITHUB_SHA
+        run: git clone --config core.autocrlf=false https://github.com/${GITHUB_REPOSITORY}.git $GITHUB_WORKSPACE && cd $GITHUB_WORKSPACE && git fetch && git checkout $GITHUB_SHA
+        env:
+          GITHUB_WORKSPACE: workspace
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
       - name: npm install
+        run: npm install
         env:
           CI: true
-        run: npm install
       - name: cover
         if: success()
+        run: npm run cover || cat coverage/lcov.info
         env:
           CI: true
-        run: npm run cover || cat coverage/lcov.info
       - name: build
         if: success()
         run: npm run build
       - name: upload coverage report
         if: success()
+        run: npx codecov -f coverage/lcov.info
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: npx codecov -f coverage/lcov.info

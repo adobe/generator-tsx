@@ -21,20 +21,22 @@ jobs:
 
     steps:
       - name: clone
-        run: git config --global core.autocrlf false && git clone https://github.com/${GITHUB_REPOSITORY}.git && cd $GITHUB_WORKSPACE && git fetch && git checkout $GITHUB_SHA
+        run: git clone --config core.autocrlf=false https://github.com/${GITHUB_REPOSITORY}.git $GITHUB_WORKSPACE && cd $GITHUB_WORKSPACE && git fetch && git checkout $GITHUB_SHA
+        env:
+          GITHUB_WORKSPACE: workspace
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
       - name: install
+        run: npm install
         env:
           CI: true
-        run: npm install
       - name: lint && cover
         if: success()
+        run: npm run lint && npm run cover
         env:
           CI: true
-        run: npm run lint && npm run cover
       - name: build && link
         if: success()
         run: npm run build && npm link
@@ -44,12 +46,12 @@ jobs:
           cd .. && mkdir site && cd site && npx yo tsx site 1.2.3 -u ci -n GitHub -e ci@github.com --css linaria --gc false -b
       - name: upload coverage report
         if: success()
+        run: npx codecov -f coverage/lcov.info || cat coverage/lcov.info
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: npx codecov -f coverage/lcov.info || cat coverage/lcov.info
       - name: release
         if: success()
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
