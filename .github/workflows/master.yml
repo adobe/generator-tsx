@@ -48,6 +48,7 @@ jobs:
 
   release:
     name: npm publish
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: release
