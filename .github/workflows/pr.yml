@@ -17,7 +17,8 @@ jobs:
           - macOS-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: checkout
+        run: git config --global core.autocrlf false && git fetch && git checkout $GITHUB_SHA
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
