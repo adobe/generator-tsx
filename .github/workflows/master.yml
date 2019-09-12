@@ -38,8 +38,7 @@ jobs:
         run: npm run build && npm link
       - name: yo tsx
         if: success()
-        run:
-          cd .. && mkdir site && cd site && npx yo tsx site 1.2.3 -u ci -n GitHub -e ci@github.com --css linaria --gc false -b
+        run: cd .. && mkdir site && cd site && npx yo tsx site 1.2.3 -u ci -n GitHub -e ci@github.com --css linaria --gc false -b
       - name: upload coverage report
         if: success()
         run: npx codecov -f coverage/lcov.info || cat coverage/lcov.info
@@ -56,7 +55,7 @@ jobs:
       - run: npm install
         env:
           CI: true
-      - name: npm run build
+      - run: npm run build
         if: success()
       - name: Configure NPM_TOKEN
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
