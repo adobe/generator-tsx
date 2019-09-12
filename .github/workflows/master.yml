@@ -20,11 +20,8 @@ jobs:
           - macOS-latest
 
     steps:
-      - name: clone
-        run: git clone --config core.autocrlf=false https://github.com/${OWNER}/${REPOSITORY_NAME}.git && cd $REPOSITORY_NAME && git fetch && git checkout $GITHUB_SHA
-        env:
-          OWNER: adobe
-          REPOSITORY_NAME: generator-tsx
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
