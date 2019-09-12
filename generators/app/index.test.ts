@@ -82,25 +82,25 @@ describe('tsx:app', () => {
 	})
 
 	it('does not reject an invalid css option', async () => {
-		await assert.doesNotReject(
-			run({
-				opts: {
-					css: 'INVALID' as any,
-				},
-			}),
-		)
+		const p = run({
+			opts: {
+				css: 'INVALID' as any,
+			},
+		})
+		assert.equal(p.then, Promise.prototype.then)
+		await assert.doesNotReject(p)
 	})
 
 	it('does not reject an empty githubUsername and version', async () => {
-		await assert.doesNotReject(
-			run({
-				args: ['APP_NAME'],
-				opts: {
-					githubUsername: '',
-					version: '',
-				},
-			}),
-		)
+		const p = run({
+			args: ['APP_NAME'],
+			opts: {
+				githubUsername: '',
+				version: '',
+			},
+		})
+		assert.equal(p.then, Promise.prototype.then)
+		await assert.doesNotReject(p)
 	})
 
 	async function run({

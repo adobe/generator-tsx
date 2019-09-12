@@ -26,7 +26,16 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: install, lint, cover, build, yo
-        run: npm install && npm run lint && npm run cover && npm run build && npm link && cd .. && mkdir site && cd site && npx yo tsx site 1.2.3 -u ci -n GitHub -e ci@github.com --css linaria --gc false -b
+        run: |
+          npm install
+          npm run lint
+          npm run cover
+          npm run build
+          npm link
+          cd ..
+          mkdir site
+          cd site
+          npx yo tsx site 1.2.3 -u ci -n GitHub -e ci@github.com --css linaria --gc false -b
         env:
           CI: true
       - name: upload coverage report
@@ -39,4 +48,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          npx semantic-release -r https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
