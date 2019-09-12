@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/adobe/generator-tsx/compare/v2.2.0...v2.3.0) (2019-09-12)
+
+
+### Bug Fixes
+
+* remove macOS from master workflow ([96c02f0](https://github.com/adobe/generator-tsx/commit/96c02f0))
+* remove macOS from pr workflow (test) ([489259b](https://github.com/adobe/generator-tsx/commit/489259b))
+
+
+### Features
+
+* use GitHub workflows instead of Travis-CI ([0058214](https://github.com/adobe/generator-tsx/commit/0058214))
+
 # [2.2.0](https://github.com/adobe/generator-tsx/compare/v2.1.0...v2.2.0) (2019-08-28)
 
 
