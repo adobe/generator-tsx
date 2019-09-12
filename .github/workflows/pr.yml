@@ -17,8 +17,8 @@ jobs:
           - macOS-latest
 
     steps:
-      - name: checkout
-        run: git config --global core.autocrlf false && git fetch && git checkout $GITHUB_SHA
+      - name: clone
+        run: git config --global core.autocrlf false && git clone https://github.com/${GITHUB_REPOSITORY}.git && cd $GITHUB_WORKSPACE && git fetch && git checkout $GITHUB_SHA
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
