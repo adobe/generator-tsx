@@ -2,6 +2,8 @@
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+![GitHub Workflow](https://github.com/<%= githubUsername %>/<%= appname
+%>/workflows/master/badge.svg)
 [![codecov](https://codecov.io/gh/<%= githubUsername %>/<%= appname
 %>/branch/master/graph/badge.svg)](https://codecov.io/gh/<%= githubUsername
 %>/<%= appname %>)

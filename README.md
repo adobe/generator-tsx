@@ -2,6 +2,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+![GitHub Workflow](https://github.com/adobe/generator-tsx/workflows/master/badge.svg)
 [![NPM version](http://img.shields.io/npm/v/generator-tsx.svg?style=flat)](https://www.npmjs.org/package/generator-tsx)
 [![npm license](http://img.shields.io/npm/l/generator-tsx.svg?style=flat-square)](https://www.npmjs.org/package/generator-tsx)
 [![codecov](https://codecov.io/gh/adobe/generator-tsx/branch/master/graph/badge.svg)](https://codecov.io/gh/adobe/generator-tsx)

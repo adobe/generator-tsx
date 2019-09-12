@@ -1,4 +1,4 @@
-name: Node CI
+name: master
 
 on:
   push:
@@ -46,9 +46,13 @@ jobs:
         run: npx codecov -f coverage/lcov.info || cat coverage/lcov.info
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+jobs:
+  release:
+    name: npm publish
+    runs-on: ubuntu-latest
+    steps:
       - name: release
-        if: success()
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://${GITHUB_TOKEN}@github.com/generator-tsx.git
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://github.com/generator-tsx.git
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
