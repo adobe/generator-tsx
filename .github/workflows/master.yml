@@ -21,9 +21,7 @@ jobs:
 
     steps:
       - name: clone
-        run: git clone --config core.autocrlf=false https://github.com/${GITHUB_REPOSITORY}.git $GITHUB_WORKSPACE && cd $GITHUB_WORKSPACE && git fetch && git checkout $GITHUB_SHA
-        env:
-          GITHUB_WORKSPACE: workspace
+        run: git clone --config core.autocrlf=false https://github.com/generator-tsx.git && cd generator-tsx && git fetch && git checkout $GITHUB_SHA
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
@@ -51,7 +49,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: release
         if: success()
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && npx semantic-release -r https://${GITHUB_TOKEN}@github.com/generator-tsx.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
