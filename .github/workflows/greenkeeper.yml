@@ -1,0 +1,41 @@
+name: greenkeeper
+
+on:
+  push:
+    branches:
+      - 'greenkeeper/*'
+
+jobs:
+  test:
+    name: Test on node ${{ matrix.node }} and ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node: [8, 10, 12]
+        os:
+          - ubuntu-latest
+          # - windows-latest
+          - macOS-latest
+
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+        env:
+          CI: true
+      - name: lint && cover
+        if: success()
+        run: npm run lint && npm run cover
+        env:
+          CI: true
+      - name: build && link
+        if: success()
+        run: npm run build && npm link
+      - name: yo tsx
+        if: success()
+        run: cd .. && mkdir site && cd site && npx yo tsx site 1.2.3 -u ci -n GitHub -e ci@github.com --css linaria --gc false -b
