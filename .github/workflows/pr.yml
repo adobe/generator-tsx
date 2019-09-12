@@ -18,7 +18,10 @@ jobs:
 
     steps:
       - name: clone
-        run: git clone --config core.autocrlf=false https://github.com/generator-tsx.git && cd generator-tsx && git fetch && git checkout $GITHUB_SHA
+        run: git clone --config core.autocrlf=false https://github.com/${OWNER}/${REPOSITORY_NAME}.git && cd $REPOSITORY_NAME && git fetch && git checkout $GITHUB_SHA
+        env:
+          OWNER: adobe
+          REPOSITORY_NAME: generator-tsx
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
