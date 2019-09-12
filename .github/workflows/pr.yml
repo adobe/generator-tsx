@@ -22,8 +22,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: npm install
-        run: npm install
+      - run: npm install
         env:
           CI: true
       - name: cover
@@ -31,9 +30,8 @@ jobs:
         run: npm run cover || cat coverage/lcov.info
         env:
           CI: true
-      - name: build
+      - run: npm run build
         if: success()
-        run: npm run build
       - name: upload coverage report
         if: success()
         run: npx codecov -f coverage/lcov.info

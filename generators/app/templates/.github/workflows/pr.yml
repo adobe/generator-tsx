@@ -1,4 +1,4 @@
-name: Node CI
+name: PR
 
 on: pull_request
 
@@ -17,15 +17,21 @@ jobs:
           - macOS-latest
 
     steps:
+      - run: git config --global core.autocrlf false
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: npm install, check-types, test/cover, build
-        run: npm install && npm run check-types && npm test -- --coverage || cat coverage/lcov.info && npm run build
+      - run: npm install
         env:
           CI: true
+      - name: check-types, cover
+        if: success()
+        run: npm run check-types && npm test -- --coverage || cat coverage/lcov.info
+        env:
+          CI: true
+      - run: npm run build
+        if: success()
       - name: upload coverage report
         if: success()
         env:

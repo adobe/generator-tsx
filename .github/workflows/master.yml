@@ -25,8 +25,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: install
-        run: npm install
+      - run: npm install
         env:
           CI: true
       - name: lint && cover
@@ -47,7 +46,6 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-jobs:
   release:
     name: npm publish
     runs-on: ubuntu-latest
