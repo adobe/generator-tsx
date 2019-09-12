@@ -22,13 +22,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: npm install, check-types, test/cover, build
-        run: |
-          npm install
-          npm run cover || cat coverage/lcov.info
-          npm run build
+      - name: npm install
         env:
           CI: true
+        run: npm install
+      - name: cover
+        if: success()
+        env:
+          CI: true
+        run: npm run cover || cat coverage/lcov.info
+      - name: build
+        if: success()
+        run: npm run build
       - name: upload coverage report
         if: success()
         env:
