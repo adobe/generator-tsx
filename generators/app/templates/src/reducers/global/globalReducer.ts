@@ -3,11 +3,6 @@ import createReducer from 'utils/createReducer'
 
 const defaultState = {}
 
-export default createReducer('global', defaultState)(
-	(state, action: types.GlobalActions) => {
-		switch (action.type) {
-			default:
-				return state
-		}
-	},
-)
+export default createReducer<typeof defaultState, types.GlobalActions>(
+	'global',
+)((/* draft, action */) => undefined)
