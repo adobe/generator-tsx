@@ -1,5 +1,3 @@
-import update from 'immutability-helper'
-
 import { types } from 'actions/barBaz'
 import FakeModel from 'models/FakeModel'
 import createReducer from 'utils/createReducer'
@@ -14,23 +12,15 @@ const defaultState: BarBazState = {
 	loading: false,
 }
 
-export default createReducer('barBaz', defaultState)(
-	(state, action: types.BarBazActions) => {
-		switch (action.type) {
-			case types.FETCH_FAKE_MODEL_FAILURE:
-				return update(defaultState, {
-					errors: { $set: action.errors },
-				})
-			case types.FETCH_FAKE_MODEL_REQUEST:
-				return update(state, {
-					loading: { $set: true },
-				})
-			case types.FETCH_FAKE_MODEL_SUCCESS:
-				return update(defaultState, {
-					$merge: action.fakeModel,
-				})
-			default:
-				return state
-		}
-	},
-)
+export default createReducer<typeof defaultState, types.BarBazActions>(
+	'barBaz',
+)((draft, action) => {
+	switch (action.type) {
+		case types.FETCH_FAKE_MODEL_FAILURE:
+			draft.errors = action.errors
+		case types.FETCH_FAKE_MODEL_REQUEST:
+			draft.loading = true
+		case types.FETCH_FAKE_MODEL_SUCCESS:
+			Object.assign(draft, action.fakeModel)
+	}
+})

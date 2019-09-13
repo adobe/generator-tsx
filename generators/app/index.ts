@@ -218,7 +218,7 @@ export = class AppGenerator extends Generator {
 			'@queso/kebab-case@^1',
 			'@reach/router@^1',
 			'full-icu@^1',
-			'immutability-helper@^3',
+			'immer@^4',
 			'ky@^0',
 			'ky-universal@^0',
 			'pathjoin@^0',
