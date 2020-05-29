@@ -6,7 +6,7 @@
 [![NPM version](http://img.shields.io/npm/v/generator-tsx.svg)](https://www.npmjs.org/package/generator-tsx)
 [![npm license](http://img.shields.io/npm/l/generator-tsx.svg)](https://www.npmjs.org/package/generator-tsx)
 [![codecov](https://codecov.io/gh/adobe/generator-tsx/branch/master/graph/badge.svg)](https://codecov.io/gh/adobe/generator-tsx)
-[![Greenkeeper badge](https://badges.greenkeeper.io/adobe/generator-tsx.svg)](https://greenkeeper.io/)
+
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ac39aa76-5042-44ed-959b-8244ddb23ae9/deploy-status)](https://app.netlify.com/sites/generator-tsx/deploys)
 <!-- markdownlint-restore -->
